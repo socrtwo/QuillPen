@@ -27,6 +27,8 @@ const SCENARIOS = [
   { name: 'small', viewport: { width: 320, height: 640 }, insets: { top: 24, right: 0, bottom: 48, left: 0 } },
   { name: 'landscape', viewport: { width: 915, height: 412 }, insets: { top: 24, right: 48, bottom: 0, left: 0 } },
   { name: 'keyboard', viewport: { width: 412, height: 560 }, insets: { top: 24, right: 0, bottom: 0, left: 0 }, keyboard: true },
+  { name: 'desktop', viewport: { width: 1280, height: 800 }, insets: { top: 0, right: 0, bottom: 0, left: 0 }, desktop: true },
+  { name: 'small-window', viewport: { width: 800, height: 560 }, insets: { top: 0, right: 0, bottom: 0, left: 0 }, desktop: true },
 ].filter((s) => !process.env.QF_LAYOUT_SCENARIOS || process.env.QF_LAYOUT_SCENARIOS.split(',').includes(s.name));
 
 // Commands that leave the page, need a real device or file, or would block the run.
@@ -146,7 +148,7 @@ function cleanupScript() {
 }
 
 async function newPage(sc, query = '') {
-  const ctx = await browser.newContext({ viewport: sc.viewport, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
+  const ctx = await browser.newContext({ viewport: sc.viewport, deviceScaleFactor: 1, isMobile: !sc.desktop, hasTouch: !sc.desktop });
   const page = await ctx.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
