@@ -45,7 +45,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Native document plumbing for QuillPen on Android.
+ * Native document plumbing for Anne's Pen on Android.
  *
  * JS contract (all binary payloads are base64 strings without line breaks):
  * <ul>
@@ -179,7 +179,7 @@ public class QuillNativePlugin extends Plugin {
                 if ((text == null || text.isEmpty()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     cm.clearPrimaryClip();
                 } else {
-                    ClipData clip = ClipData.newPlainText("QuillPen", text);
+                    ClipData clip = ClipData.newPlainText("Anne's Pen", text);
                     if (sensitive && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                         PersistableBundle extras = new PersistableBundle();
                         extras.putBoolean(ClipDescription.EXTRA_IS_SENSITIVE, true);
@@ -370,7 +370,7 @@ public class QuillNativePlugin extends Plugin {
 
     @PluginMethod
     public void print(PluginCall call) {
-        final String jobName = call.getString("jobName", "QuillPen document");
+        final String jobName = call.getString("jobName", "Anne's Pen document");
         final Activity activity = getActivity();
         if (activity == null) {
             call.reject("Printing is not available right now");
@@ -446,7 +446,7 @@ public class QuillNativePlugin extends Plugin {
         });
     }
 
-    /** Sister apps that may receive a file: QuillGrid, QuillPost, QuillStage (and nothing else). */
+    /** Sister apps that may receive a file: Anne's Grid, Anne's Post, Anne's Stage (and nothing else). */
     private static boolean isSisterPackage(String pkg) {
         return "io.github.socrtwo.quillgrid".equals(pkg) || "io.github.socrtwo.quillpost".equals(pkg) || "io.github.socrtwo.quillstage".equals(pkg);
     }
@@ -472,7 +472,7 @@ public class QuillNativePlugin extends Plugin {
         final String mime = call.getString("mime", "application/octet-stream");
         final String data = call.getString("data");
         if (!isSisterPackage(pkg)) {
-            call.reject("Not a QuillPen sister app");
+            call.reject("Not an Anne's Pen sister app");
             return;
         }
         final Context context = getContext();

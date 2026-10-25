@@ -223,7 +223,7 @@ for (const sc of SCENARIOS) {
     await page.evaluate(cleanupScript).catch(() => {});
   }
   await ctx.close();
-  // QuillPost's embedded editor (?embed=compose): its Done/Cancel bar and frame.
+  // Anne's Post's embedded editor (?embed=compose): its Done/Cancel bar and frame.
   {
     const emb = await newPage(sc, '?embed=compose&host=quillpost&v=1');
     const res = await emb.page.evaluate(measure, { sc, frame: true });

@@ -88,7 +88,7 @@ function borderCss2Odf(v: string | undefined | null, settings: DocSettings): str
   return `${r2(w)}pt ${m[3] || 'solid'} ${c}`;
 }
 
-/** Paragraph styles the exporter needs that QuillPen has no direct equivalent for. */
+/** Paragraph styles the exporter needs that Anne's Pen has no direct equivalent for. */
 const EXTRA_STYLES: Record<string, Partial<StyleDef>> = {
   'Preformatted Text': { name: 'Preformatted Text', type: 'paragraph', basedOn: 'Normal', font: 'Liberation Mono', size: 10, spaceBefore: 0, spaceAfter: 0 },
   'Horizontal Line': { name: 'Horizontal Line', type: 'paragraph', basedOn: 'Normal', size: 6, spaceAfter: 8, borderBottom: '1px solid #808080' },
@@ -797,7 +797,7 @@ class OdtWriter {
     const p = this.settings.properties;
     const now = isoNow().replace(/Z$/, '');
     const items = [
-      '<meta:generator>QuillPen</meta:generator>',
+      '<meta:generator>Anne\'s Pen</meta:generator>',
       this.title ? `<dc:title>${x(this.title)}</dc:title>` : '',
       p.subject ? `<dc:subject>${x(p.subject)}</dc:subject>` : '',
       p.comments ? `<dc:description>${x(p.comments)}</dc:description>` : '',
@@ -1089,7 +1089,7 @@ class OdtReader {
     return a;
   }
 
-  /** Map an ODF named paragraph style onto a QuillPen style (creating a custom style if needed). */
+  /** Map an ODF named paragraph style onto an Anne's Pen style (creating a custom style if needed). */
   qfStyle(named: OStyle | null, outline: number | null): string {
     if (!named) return outline ? `Heading ${Math.min(9, outline)}` : 'Normal';
     const canon = canonicalStyleName(named.display) || canonicalStyleName(named.name);

@@ -1,6 +1,6 @@
 # Architecture
 
-QuillPen is a TypeScript web application. The Android release packages it with Capacitor, and the same build runs in a desktop browser.
+Anne's Pen is a TypeScript web application. The Android release packages it with Capacitor, and the same build runs in a desktop browser.
 
 ```
 src/
@@ -62,7 +62,7 @@ src/
                           local (Transformers.js worker), oauth (OpenRouter PKCE), features (AI tab as data),
                           apply (word-level diff edits, Markdown blocks, comments, tracked AI edits)
   util/sanitize.ts        HTML/URL sanitizing for document- and clipboard-controlled content
-  embed/                  QuillPost's embedded editor (?embed=compose, docs/EMBED.md): embed (postMessage protocol),
+  embed/                  Anne's Post's embedded editor (?embed=compose, docs/EMBED.md): embed (postMessage protocol),
                           emailHtml (inline-styled, script-free HTML), hidden (file commands left out), mode (wiring)
   ui/scrollcue.ts         "more below" cues for menus, dialogs, lists and panes (copy of the suite's scrollcue module)
   proof/                  spelling worker: bundled English with nspell + SCOWL en_US/en_GB/en_CA/en_AU ("any

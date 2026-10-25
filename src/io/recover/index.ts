@@ -309,8 +309,8 @@ function appendUnverified(parts: Map<string, Uint8Array>, isOdt: boolean, text: 
   const name = isOdt ? 'content.xml' : 'word/document.xml';
   const xml = dec(parts.get(name)!);
   const notice = text
-    ? '[QuillPen: the file is damaged here. The text below was decoded after the damage and is unverified; check it against another copy. The text just above may contain garbled words.]'
-    : '[QuillPen: the file is damaged from this point, and the rest of the document could not be recovered. The text just above may contain garbled words.]';
+    ? '[Anne\'s Pen: the file is damaged here. The text below was decoded after the damage and is unverified; check it against another copy. The text just above may contain garbled words.]'
+    : '[Anne\'s Pen: the file is damaged from this point, and the rest of the document could not be recovered. The text just above may contain garbled words.]';
   const lines = [notice, ...text.split('\n').filter((l) => l.trim())];
   const paras = isOdt
     ? lines.map((l) => `<text:p>${xmlEsc(l)}</text:p>`).join('')

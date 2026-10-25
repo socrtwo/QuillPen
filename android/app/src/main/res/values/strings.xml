@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">QuillPen</string>
-    <string name="title_activity_main">QuillPen</string>
+    <string name="app_name">Anne\'s Pen</string>
+    <string name="title_activity_main">Anne\'s Pen</string>
     <string name="package_name">io.github.socrtwo.quillpen</string>
     <string name="custom_url_scheme">io.github.socrtwo.quillpen</string>
 </resources>

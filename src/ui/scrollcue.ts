@@ -1,5 +1,5 @@
 /**
- * Quill suite scroll cues (see ../styles/scrollcue.css). Framework-free; one instance per page.
+ * Anne's Office suite scroll cues (see ../styles/scrollcue.css). Framework-free; one instance per page.
  * TypeScript copy of the shared suite module suite/scrollcue/scrollcue.js: keep the two in step.
  *
  *   import { installScrollCues } from './scrollcue.js';

@@ -1,4 +1,4 @@
-/** QuillPen entry point. */
+/** Anne's Pen entry point. */
 import './util/legacy'; // first: carries data over from the app's former name
 import 'material-symbols/outlined.css';
 import 'katex/dist/katex.min.css';
@@ -31,7 +31,7 @@ installScrollCues({
 
 const host = document.getElementById('app')!;
 const app = new App(host);
-// ?embed=compose: QuillPost's embedded message editor (docs/EMBED.md).
+// ?embed=compose: Anne's Post's embedded message editor (docs/EMBED.md).
 app.embedded = embedModeFrom(location.search) === 'compose';
 app.ui = new Shell(app);
 app.rebuildKeyIndex();

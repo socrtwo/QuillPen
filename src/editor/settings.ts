@@ -123,7 +123,7 @@ export function defaultSettings(): DocSettings {
     citationStyle: 'APA',
     styles: {},
     styleSet: 'QuillPen',
-    theme: { name: 'QuillPen', headingFont: 'Carlito', bodyFont: 'Carlito', accent: ['#2b579a', '#c0504d', '#9bbb59', '#8064a2', '#4bacc6', '#f79646'] },
+    theme: { name: 'Anne\'s Pen', headingFont: 'Carlito', bodyFont: 'Carlito', accent: ['#2b579a', '#c0504d', '#9bbb59', '#8064a2', '#4bacc6', '#f79646'] },
     pageColor: null,
     watermark: null,
     pageBorder: null,

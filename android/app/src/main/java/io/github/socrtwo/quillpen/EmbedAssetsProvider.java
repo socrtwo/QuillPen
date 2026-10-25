@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * Serves the app's built web files (the Capacitor "public" asset folder, i.e. dist/) read-only to other apps,
- * so QuillPost can run this editor inside its own window (docs/EMBED.md):
+ * so Anne's Post can run this editor inside its own window (docs/EMBED.md):
  *
  *   content://io.github.socrtwo.quillpen.embed/index.html  ->  assets/public/index.html
  *

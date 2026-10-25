@@ -18,7 +18,7 @@ export async function encryptJson(obj: unknown, password: string): Promise<Uint8
 
 export async function decryptJson(data: ArrayBuffer, password: string): Promise<any> {
   const u8 = new Uint8Array(data);
-  for (let i = 0; i < MAGIC.length; i++) if (u8[i] !== MAGIC[i]) throw new Error('Not an encrypted QuillPen file');
+  for (let i = 0; i < MAGIC.length; i++) if (u8[i] !== MAGIC[i]) throw new Error('Not an encrypted Anne\'s Pen file');
   const salt = u8.slice(MAGIC.length, MAGIC.length + 16);
   const iv = u8.slice(MAGIC.length + 16, MAGIC.length + 28);
   const ct = u8.slice(MAGIC.length + 28);

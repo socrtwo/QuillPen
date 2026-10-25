@@ -47,7 +47,7 @@ async function privacyCheck(): Promise<boolean> {
   const names = listNames(fresh.map((p) => p.name));
   const free = fresh.some((p) => p.free === 'free');
   const ok = await confirmDialog('Sending Text to an AI Service',
-    `AI commands send the text they need directly from this device to ${names}. QuillPen has no server and keeps no copy. ${fresh.length > 1 ? 'Each service\'s' : `${names}'s`} terms and privacy policy apply${free ? ', and free tiers may use what you send to improve their models' : ''}. Continue?`, 'Continue', 'Cancel');
+    `AI commands send the text they need directly from this device to ${names}. Anne\'s Pen has no server and keeps no copy. ${fresh.length > 1 ? 'Each service\'s' : `${names}'s`} terms and privacy policy apply${free ? ', and free tiers may use what you send to improve their models' : ''}. Continue?`, 'Continue', 'Cancel');
   if (ok) saveAiSettings((x) => { for (const p of fresh) if (!x.privacyAck.includes(p.id)) x.privacyAck.push(p.id); });
   return ok;
 }
@@ -474,7 +474,7 @@ def([
         ? `<p><b>Several AIs:</b> each request goes to ${esc(listNames(receivingProviders(s).map((id) => { const d = providerById(id); return d ? `${d.name}${d.kind === 'local' || d.kind === 'builtin' ? ' (on this device)' : ''}` : id; })))}. Each cloud service receives the selected text (or the document, after asking) and the other AIs' answers; each one's terms apply.</p>`
         : `<p><b>Active provider:</b> ${p ? esc(p.name) : 'none'}${p && (p.kind === 'local' || p.kind === 'builtin') ? ' — runs on this device; your text does not leave it.' : p ? ' — the selected text (or the document, after asking) is sent to this service; its terms apply.' : ''}</p>`;
       await openDialog({ title: 'AI & Privacy', ok: 'Close', cancel: false, fields: [{ key: 'i', type: 'info', html: [
-        '<p><b>QuillPen has no server.</b> AI requests go directly from this device to the provider you choose, using your own key. Nothing is sent until you run an AI command.</p>',
+        '<p><b>Anne\'s Pen has no server.</b> AI requests go directly from this device to the provider you choose, using your own key. Nothing is sent until you run an AI command.</p>',
         who,
         '<p><b>Keys</b> are stored on this device only: in the Android Keystore-encrypted store in the app, or in this browser\'s IndexedDB on the web. They are never placed in documents, drafts or exported settings.</p>',
         '<p><b>Free tiers</b> of some services may use prompts to improve their models. Use the on-device model for confidential text.</p>',

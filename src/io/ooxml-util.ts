@@ -374,7 +374,7 @@ export function svgSize(text: string): { w: number; h: number } | null {
 // ------------------------------------------------------------------------------------------
 // Fonts
 
-/** Open fonts bundled with QuillPen and the proprietary families they are metric-compatible with. */
+/** Open fonts bundled with Anne's Pen and the proprietary families they are metric-compatible with. */
 export const FONT_ALIASES: Record<string, string> = {
   Carlito: 'Calibri', Caladea: 'Cambria', Tinos: 'Times New Roman', Arimo: 'Arial', Cousine: 'Courier New',
 };

@@ -342,7 +342,7 @@ const STYLE_ALIASES: Record<string, string> = {
   'contents 1': 'TOC 1', 'contents 2': 'TOC 2', 'contents 3': 'TOC 3', 'toc 1': 'TOC 1', 'toc 2': 'TOC 2', 'toc 3': 'TOC 3',
 };
 
-/** Map a style name from another application onto a QuillPen built-in style name, or null. */
+/** Map a style name from another application onto an Anne's Pen built-in style name, or null. */
 export function canonicalStyleName(name: string | null | undefined): string | null {
   if (!name) return null;
   const n = name.replace(/_20_/g, ' ').replace(/_5f_/g, '_').replace(/\s+/g, ' ').trim();

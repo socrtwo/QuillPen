@@ -1,4 +1,4 @@
-# Building QuillPen
+# Building Anne's Pen
 
 All platforms share one web build (`npm run build` → `dist/`). Each platform wraps it:
 
@@ -84,7 +84,7 @@ The manual steps the script performs, if you prefer to run them yourself:
 
 ```bash
 pkg update -y && pkg install -y git nodejs-lts openjdk-21 aapt aapt2 unzip wget zip
-git clone --depth 1 https://github.com/socrtwo/QuillPen && cd QuillPen
+git clone --depth 1 https://github.com/socrtwo/QuillPen && cd Anne's Pen
 ELECTRON_SKIP_BINARY_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci
 npm run build
 mkdir -p ~/android-sdk/cmdline-tools && cd ~/android-sdk/cmdline-tools

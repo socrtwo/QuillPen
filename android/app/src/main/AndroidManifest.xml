@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- "Open with QuillPen" for documents identified by MIME type
+            <!-- "Open with Anne's Pen" for documents identified by MIME type
                  (a mimeType-only <data> matches content: and file: URIs). -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -142,7 +142,7 @@
 
         </activity>
 
-        <!-- Read-only access to the built web app (assets/public) for QuillPost's embedded editor
+        <!-- Read-only access to the built web app (assets/public) for Anne's Post's embedded editor
              (docs/EMBED.md): content://<applicationId>.embed/index.html -->
         <provider
             android:name=".EmbedAssetsProvider"
