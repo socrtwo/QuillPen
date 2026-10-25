@@ -232,7 +232,7 @@ describe('damaged deflate inside an intact archive', () => {
     const res = await importFile(buf(await damagedPackage()), 'mid.docx');
     const text = res.doc.textContent;
     expect(text).toContain('Paragraph 1 of a document');
-    expect(text).toMatch(/QuillPen: the file is damaged/);
+    expect(text).toMatch(/Anne's Pen: the file is damaged/);
     expect(res.recovery!.notes.join(' ')).toMatch(/compressed data inside the file is damaged/);
   });
 });

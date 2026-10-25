@@ -161,7 +161,7 @@ export async function exportEpubBytes(doc: PMNode, opts: ExportOptions): Promise
     p.comments ? `<dc:description>${x(p.comments)}</dc:description>` : '',
     p.company ? `<dc:publisher>${x(p.company)}</dc:publisher>` : '',
     `<meta property="dcterms:modified">${isoNow()}</meta>`,
-    '<meta name="generator" content="QuillPen"/>',
+    '<meta name="generator" content="Anne\'s Pen"/>',
   ].filter(Boolean).join('\n    ');
   const manifest = [
     '<item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>',

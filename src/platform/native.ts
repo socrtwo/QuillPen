@@ -6,7 +6,7 @@
  * - Desktop (Windows, macOS, Linux, Raspberry Pi OS): the Electron preload (electron/preload.cjs)
  *   exposes the same interface as `window.quillDesktop`, backed by native file dialogs and the file system.
  * - Browser and iOS: <input type=file>, the File System Access API or downloads, and window.print().
- *   On iOS, saved files go to the app's Documents folder (Files ▸ On My iPhone ▸ QuillPen).
+ *   On iOS, saved files go to the app's Documents folder (Files ▸ On My iPhone ▸ Anne's Pen).
  */
 import { Capacitor, registerPlugin } from '@capacitor/core';
 import { download, pickFile } from '../ui/dom';
@@ -43,7 +43,7 @@ interface QuillNativePlugin {
   /** One-shot http://127.0.0.1:<port>/ listener for OAuth redirects (OpenRouter PKCE); only requests for `path` count. */
   startLoopback(opts: { timeoutMs: number; successHtml?: string; path?: string }): Promise<{ port: number }>;
   stopLoopback(): Promise<void>;
-  /** Android: is a sister app (QuillGrid, QuillPost, QuillStage) installed? */
+  /** Android: is a sister app (Anne's Grid, Anne's Post, Anne's Stage) installed? */
   canLaunchApp?(opts: { package: string }): Promise<{ installed: boolean }>;
   /** Android: open a file in a sister app (ACTION_VIEW restricted to that package). */
   launchApp?(opts: { package: string; uri?: string | null; name: string; mime: string; data?: string }): Promise<{ installed: boolean; launched: boolean }>;
@@ -122,7 +122,7 @@ export async function openDocument(accept: string, mimeTypes: string[]): Promise
 }
 
 function toastSaved(name: string): void {
-  import('../ui/dialog').then(({ toast }) => toast(`Saved "${name}" to Files ▸ On My iPhone ▸ QuillPen`)).catch(() => undefined);
+  import('../ui/dialog').then(({ toast }) => toast(`Saved "${name}" to Files ▸ On My iPhone ▸ Anne's Pen`)).catch(() => undefined);
 }
 
 export async function saveAs(blob: Blob, name: string): Promise<{ uri: string | null; name: string } | null> {
@@ -263,7 +263,7 @@ export async function onBackButton(cb: () => boolean): Promise<void> {
 // Files are identified by content, so the picker offers every type it can (and "All files").
 export const OPEN_ACCEPT = [...new Set([
   ...'docx docm dotx dotm doc dot wbk asd odt ott fodt rtf html htm md markdown txt epub qpd json'.split(' '),
-  'qfd', 'qfde', // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+  'qfd', 'qfde', // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
   ...'wpd wp wp4 wp5 wp6 wpt wps wri lwp sam mcw cwk wn ws ws4 ws5 ws6 ws7 xy xyw rft dca hwp sdw'.split(' '),
   ...'csv tsv xlsx xlsm xls ods dbf wk1 wks pptx ppt odp key eml emlx mbox msg'.split(' '),
   ...OPEN_EXTENSIONS_B,
@@ -278,13 +278,13 @@ export const OPEN_MIMES = [
 ];
 
 // ------------------------------------------------------------------------------------------
-// Sister apps: QuillGrid (spreadsheets), QuillPost (email), QuillStage (presentations)
+// Sister apps: Anne's Grid (spreadsheets), Anne's Post (email), Anne's Stage (presentations)
 
 export interface SisterApp { id: 'quillgrid' | 'quillpost' | 'quillstage'; name: string; package: string; web: string; what: string }
 export const SISTER_APPS: Record<'spreadsheet' | 'email' | 'presentation', SisterApp> = {
-  spreadsheet: { id: 'quillgrid', name: 'QuillGrid', package: 'io.github.socrtwo.quillgrid', web: 'https://socrtwo.github.io/QuillGrid/', what: 'spreadsheet' },
-  email: { id: 'quillpost', name: 'QuillPost', package: 'io.github.socrtwo.quillpost', web: 'https://socrtwo.github.io/QuillPost/', what: 'email' },
-  presentation: { id: 'quillstage', name: 'QuillStage', package: 'io.github.socrtwo.quillstage', web: 'https://socrtwo.github.io/QuillStage/', what: 'presentation' },
+  spreadsheet: { id: 'quillgrid', name: 'Anne\'s Grid', package: 'io.github.socrtwo.quillgrid', web: 'https://socrtwo.github.io/QuillGrid/', what: 'spreadsheet' },
+  email: { id: 'quillpost', name: 'Anne\'s Post', package: 'io.github.socrtwo.quillpost', web: 'https://socrtwo.github.io/QuillPost/', what: 'email' },
+  presentation: { id: 'quillstage', name: 'Anne\'s Stage', package: 'io.github.socrtwo.quillstage', web: 'https://socrtwo.github.io/QuillStage/', what: 'presentation' },
 };
 
 /** 'yes' when the sister app can be launched here, 'maybe' when only trying will tell (desktop), 'web' for a link. */

@@ -1,4 +1,4 @@
-// Writes public/third-party-notices.txt: the license of every runtime npm package QuillPen
+// Writes public/third-party-notices.txt: the license of every runtime npm package Anne's Pen
 // ships (dependencies and their dependencies), so the notices the MIT, BSD, SIL OFL and Apache
 // licenses ask for travel with the web build and the Android app. Runs before `npm run build`.
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'node:fs';
@@ -45,16 +45,16 @@ const licenseText = (dir) => {
 
 const rule = '-'.repeat(78);
 const parts = [
-  'QuillPen third-party notices',
+  'Anne\'s Pen third-party notices',
   '',
-  'QuillPen is MIT-licensed. It includes the open-source components below; each one\'s',
+  'Anne\'s Pen is MIT-licensed. It includes the open-source components below; each one\'s',
   'copyright notice and license follow. The Android app also includes AndroidX libraries',
   '(appcompat, coordinatorlayout, core, core-splashscreen, activity) under the Apache',
   'License 2.0, whose text appears below with Material Symbols.',
   '',
   'Hunspell (https://github.com/hunspell/hunspell), compiled to WebAssembly inside hunspell-asm',
   'and used unmodified for downloaded spelling dictionaries, is tri-licensed under the Mozilla',
-  'Public License 1.1, GPL 2.0 or LGPL 2.1; QuillPen uses it under the MPL 1.1',
+  'Public License 1.1, GPL 2.0 or LGPL 2.1; Anne\'s Pen uses it under the MPL 1.1',
   '(https://www.mozilla.org/MPL/1.1/). Its source code is available at the address above.',
   'Desktop builds also include Electron (MIT) and Chromium, whose licenses ship alongside the',
   'app as LICENSE.electron.txt and LICENSES.chromium.html.',

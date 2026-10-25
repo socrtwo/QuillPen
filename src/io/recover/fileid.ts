@@ -39,7 +39,7 @@ const RECOMMEND_ORDER: Record<string, string[]> = {
   xml: ['xmltrncatorfixr'],
 };
 
-/** File kinds QuillPen itself opens. */
+/** File kinds Anne's Pen itself opens. */
 export const HANDLED_HERE = ['docx', 'ooxml', 'doc', 'odt', 'rtf', 'html', 'xml', 'txt', 'csv', 'epub', 'ole'];
 
 export const DESCRIPTIONS: Record<string, string> = {

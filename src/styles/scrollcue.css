@@ -1,5 +1,5 @@
 /*
- * Quill suite scroll cues: shows that a menu, list, dialog or pane has more below (or above).
+ * Anne's Office suite scroll cues: shows that a menu, list, dialog or pane has more below (or above).
  *  1. Thin scrollbars whose thumb darkens while hovered or dragged (desktop). The width stays the same so
  *     the content never reflows under the pointer. Overlay bars on touch devices are hidden until
  *     scrolling, so 2 and 3 carry the cue there.

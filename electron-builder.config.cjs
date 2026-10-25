@@ -6,15 +6,16 @@
 /** @type {import('electron-builder').Configuration} */
 module.exports = {
   appId: 'io.github.socrtwo.quillpen',
-  productName: 'QuillPen',
-  copyright: 'QuillPen contributors, MIT License',
+  productName: 'Anne\'s Pen',
+  executableName: 'QuillPen', // the binary keeps its old name; the product (display) name is Anne's Pen
+  copyright: 'Anne\'s Pen contributors, MIT License',
   directories: { app: 'build/desktop-app', output: 'release', buildResources: 'resources' },
   artifactName: 'QuillPen-${version}-${os}-${arch}.${ext}',
   asar: true,
   // Everything the app needs is bundled into dist/ by Vite; ship no node_modules.
   files: ['dist/**/*', 'electron/**/*', 'package.json', '!**/node_modules/**'],
   icon: 'resources/icon-1024.png',
-  // The web build, unpacked next to app.asar as resources/embed/, so QuillPost desktop can run this editor
+  // The web build, unpacked next to app.asar as resources/embed/, so Anne's Post desktop can run this editor
   // inside its own window (docs/EMBED.md). Paths are relative to the project folder.
   extraResources: [{ from: 'dist', to: 'embed', filter: ['**/*'] }],
   fileAssociations: [
@@ -22,8 +23,8 @@ module.exports = {
     { ext: 'odt', name: 'OpenDocument Text', role: 'Editor', mimeType: 'application/vnd.oasis.opendocument.text' },
     { ext: 'rtf', name: 'Rich Text Document', role: 'Editor', mimeType: 'application/rtf' },
     { ext: 'doc', name: 'Word 97-2003 Document', role: 'Viewer', mimeType: 'application/msword' },
-    { ext: 'qpd', name: 'QuillPen Document', role: 'Editor' },
-    { ext: 'qfd', name: 'QuillPen Document (QuillForge)', role: 'Editor' }, // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+    { ext: 'qpd', name: 'Anne\'s Pen Document', role: 'Editor' },
+    { ext: 'qfd', name: 'Anne\'s Pen Document (QuillForge)', role: 'Editor' }, // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
     { ext: ['wpd', 'wp5', 'wp6'], name: 'WordPerfect Document', role: 'Viewer', mimeType: 'application/vnd.wordperfect' },
     { ext: 'wps', name: 'Microsoft Works Document', role: 'Viewer', mimeType: 'application/vnd.ms-works' },
     { ext: 'wri', name: 'Windows Write Document', role: 'Viewer', mimeType: 'application/x-mswrite' },

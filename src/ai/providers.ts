@@ -7,7 +7,7 @@
  * correct themselves.
  *
  * Provider and model names are used nominatively (to say which service a key belongs to); no
- * provider's branding is used for QuillPen's own features.
+ * provider's branding is used for Anne's Pen's own features.
  */
 
 export type ApiKind = 'openai' | 'anthropic' | 'gemini' | 'local' | 'builtin';
@@ -56,7 +56,7 @@ export interface ProviderDef {
 export const PROVIDERS: ProviderDef[] = [
   // ---------------------------------------------------------------- free, no account
   {
-    id: 'device', name: 'On-device model (QuillPen Local AI)', kind: 'local', baseUrl: '', needsKey: false,
+    id: 'device', name: 'On-device model (Anne\'s Pen Local AI)', kind: 'local', baseUrl: '', needsKey: false,
     links: { docs: 'https://huggingface.co/docs/transformers.js' },
     free: 'device', freeNote: 'Free, private, no account. Downloads a small open model once (about 270 MB to 1 GB) and runs it on this device; works offline afterwards. Slower and less capable than cloud models.',
     keyViewable: true, models: { fast: 'onnx-community/Qwen2.5-0.5B-Instruct', quality: 'onnx-community/Qwen2.5-0.5B-Instruct' }, cors: 'local',
@@ -74,7 +74,7 @@ export const PROVIDERS: ProviderDef[] = [
     links: { signup: 'https://openrouter.ai/', keys: 'https://openrouter.ai/settings/keys', billing: 'https://openrouter.ai/settings/credits', free: 'https://openrouter.ai/models?max_price=0', docs: 'https://openrouter.ai/docs' },
     free: 'free', freeNote: 'Free models (":free" and the openrouter/free router): 20 requests per minute, 50 per day (1,000 per day after a one-time $10 credit purchase). One-click sign-in returns a key automatically. Paid models from every major lab with credits.',
     keyViewable: false, models: { fast: 'openrouter/free', quality: 'openrouter/auto' }, cors: 'yes', vision: true,
-    extraHeaders: { 'HTTP-Referer': 'https://github.com/socrtwo/QuillPen', 'X-Title': 'QuillPen' },
+    extraHeaders: { 'HTTP-Referer': 'https://github.com/socrtwo/QuillPen', 'X-Title': 'Anne\'s Pen' },
   },
   {
     id: 'gemini', name: 'Google Gemini API', kind: 'gemini', baseUrl: 'https://generativelanguage.googleapis.com/v1beta', needsKey: true,

@@ -1,4 +1,4 @@
-// QuillPen desktop app (Windows, macOS, Linux, Raspberry Pi OS): Electron main process.
+// Anne's Pen desktop app (Windows, macOS, Linux, Raspberry Pi OS): Electron main process.
 //
 // The web build (dist/) is served from the privileged app:// scheme so module workers, fetch and
 // IndexedDB behave as on the web. The renderer is sandboxed with context isolation and no Node;
@@ -10,7 +10,7 @@ const { app, BrowserWindow, protocol, net, ipcMain, dialog, shell, clipboard, sa
 const path = require('node:path');
 const fs = require('node:fs');
 
-// QuillPen was formerly named QuillForge: on the first start after the rename, copy the old data
+// Anne's Pen was formerly named QuillForge: on the first start after the rename, copy the old data
 // folder (settings, drafts, granted files, stored keys) to the new one before anything writes there.
 try {
   const userData = app.getPath('userData');
@@ -25,7 +25,7 @@ const SCHEME = 'app';
 // The page's origin keeps the app's former name so settings, drafts and keys stored by earlier
 // versions stay readable.
 const ORIGIN = `${SCHEME}://quillforge`; // rename:keep
-const OPENABLE = ['docx', 'docm', 'dotx', 'dotm', 'doc', 'dot', 'wbk', 'asd', 'odt', 'ott', 'fodt', 'rtf', 'html', 'htm', 'md', 'markdown', 'txt', 'epub', 'qpd', 'qpde', 'json', // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+const OPENABLE = ['docx', 'docm', 'dotx', 'dotm', 'doc', 'dot', 'wbk', 'asd', 'odt', 'ott', 'fodt', 'rtf', 'html', 'htm', 'md', 'markdown', 'txt', 'epub', 'qpd', 'qpde', 'json', // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
   // Legacy word processors (opened by content, so the extension is only a hint)
   'wpd', 'wp', 'wp4', 'wp5', 'wp6', 'wpt', 'wps', 'wri', 'lwp', 'sam', 'mcw', 'cwk', 'wn', 'ws', 'ws4', 'ws5', 'ws6', 'ws7', 'xy', 'xyw', 'rft', 'dca', 'hwp',
   // Spreadsheets, presentations and email (imported as documents, or handed to the sister apps)
@@ -60,7 +60,7 @@ function grant(p) {
 function grantedPath(uri) {
   if (typeof uri !== 'string' || !uri.startsWith('file:')) throw new Error('Not a file address');
   const p = path.resolve(fileURLToPath(uri));
-  if (!grants.has(p)) throw new Error('QuillPen has no permission for this file; open it again.');
+  if (!grants.has(p)) throw new Error('Anne\'s Pen has no permission for this file; open it again.');
   return p;
 }
 const MIME = { csv: 'text/csv', eml: 'message/rfc822', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', odt: 'application/vnd.oasis.opendocument.text', rtf: 'application/rtf', html: 'text/html', htm: 'text/html', md: 'text/markdown', txt: 'text/plain', epub: 'application/epub+zip', doc: 'application/msword', json: 'application/json' };
@@ -79,10 +79,10 @@ function fileFromArgs(argv) {
 }
 
 // ------------------------------------------------------------------------------------------
-// Sister apps (QuillGrid, QuillPost, QuillStage): open a file there when the system says that app
+// Sister apps (Anne's Grid, Anne's Post, Anne's Stage): open a file there when the system says that app
 // handles the file type.
 
-const SISTERS = { quillgrid: 'QuillGrid', quillpost: 'QuillPost', quillstage: 'QuillStage' };
+const SISTERS = { quillgrid: 'Anne\'s Grid', quillpost: 'Anne\'s Post', quillstage: 'Anne\'s Stage' };
 function run(cmd, args) {
   try { return require('node:child_process').execFileSync(cmd, args, { encoding: 'utf8', timeout: 5000, windowsHide: true }).trim(); } catch { return ''; }
 }
@@ -284,7 +284,7 @@ function createWindow() {
     height: 860,
     minWidth: 360,
     minHeight: 480,
-    title: 'QuillPen',
+    title: 'Anne\'s Pen',
     backgroundColor: '#ffffff',
     autoHideMenuBar: process.platform !== 'darwin',
     icon: path.join(__dirname, 'icon.png'),
@@ -294,7 +294,7 @@ function createWindow() {
       sandbox: true,
       nodeIntegration: false,
       webSecurity: true,
-      spellcheck: false, // QuillPen has its own spelling checker
+      spellcheck: false, // Anne's Pen has its own spelling checker
     },
   });
   // Links open in the system browser; the window never navigates away from the app.
@@ -302,7 +302,7 @@ function createWindow() {
   win.webContents.on('will-navigate', (e, url) => { if (!url.startsWith(ORIGIN)) { e.preventDefault(); if (safeUrl(url)) void shell.openExternal(url); } });
   // The page asks before unloading with unsaved documents: confirm here, as the browser would.
   win.webContents.on('will-prevent-unload', (e) => {
-    const choice = dialog.showMessageBoxSync(win, { type: 'question', buttons: ['Close without saving', 'Cancel'], defaultId: 1, cancelId: 1, title: 'Unsaved changes', message: 'Some documents have unsaved changes. Close QuillPen anyway?' });
+    const choice = dialog.showMessageBoxSync(win, { type: 'question', buttons: ['Close without saving', 'Cancel'], defaultId: 1, cancelId: 1, title: 'Unsaved changes', message: 'Some documents have unsaved changes. Close Anne\'s Pen anyway?' });
     if (choice === 0) e.preventDefault();
   });
   win.on('closed', () => { win = null; });

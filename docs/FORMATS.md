@@ -1,6 +1,6 @@
 # File formats
 
-QuillPen identifies every file by its **content**, not its name (`src/io/sniff.ts`): magic numbers,
+Anne's Pen identifies every file by its **content**, not its name (`src/io/sniff.ts`): magic numbers,
 compound-file (OLE2) stream names, ZIP entry names and `mimetype` entries, XML root elements and
 namespaces, RTF/HTML/MIME headers, and text heuristics (byte-order marks, UTF-16 without a BOM,
 UTF-8 validity, markup). The extension only breaks ties between equally likely formats. When the
@@ -9,7 +9,7 @@ content and the name disagree, the file opens by content and a short note says s
 same way.
 
 Spreadsheets, presentations and email are not word-processing documents. Opening one asks whether
-to hand it to the sister app that edits it natively (QuillGrid, QuillStage or QuillPost: on Android
+to hand it to the sister app that edits it natively (Anne's Grid, Anne's Stage or Anne's Post: on Android
 through a view intent limited to that app's package, on the desktop through the system's registered
 handler, on the web through a link), or to import it into a document: one table per sheet, one
 section per slide, or a message with its header block, body and attachment list.
@@ -65,22 +65,22 @@ format-aware text extraction ("Legacy word processor text") next to the generic 
 | --- | --- | --- | --- | --- | --- |
 | Microsoft Excel | 2007-current | .xlsx .xlsm .xltx | ZIP with `xl/workbook.xml` | One table per sheet, values as displayed (numbers, text, booleans, dates) | Formulas show their cached values; cell formatting, charts and merged cells are not kept. 5,000 rows × 64 columns per sheet. |
 | Microsoft Excel | 2.x-2003 (BIFF2-BIFF8), Works spreadsheets | .xls .xlt .xlr | OLE2 `Workbook` / `Book`, or a BIFF2-4 BOF record | As above | As above. Password-protected workbooks are refused. |
-| Excel binary workbook | 2007-current | .xlsb | ZIP with `xl/workbook.bin` | Recognized | Not importable; open in QuillGrid. |
+| Excel binary workbook | 2007-current | .xlsb | ZIP with `xl/workbook.bin` | Recognized | Not importable; open in Anne's Grid. |
 | OpenDocument spreadsheet | 1.0-1.3 | .ods .ots .fods | `mimetype` / `office:mimetype` | One table per sheet | As for Excel. |
 | CSV / TSV | RFC 4180 | .csv .tsv .tab (any) | Consistent delimiter counts in text | One table (`,` `;` `|` or tab detected) | |
 | dBASE / FoxPro | III-7 | .dbf | Version byte, date and header length | One table with field names | Memo fields are not read. |
 | Lotus 1-2-3 | 1A-97 | .wk1 .wks .wk3 .wk4 .123 | BOF record (00 00, version) | Values of all sheets | Formulas show their cached values. |
-| Quattro Pro, Apple Numbers, Gnumeric, SYLK, DIF, Excel 2003 XML, StarCalc | various | .qpw .wb1-3 .wq1-2 .numbers .gnumeric .slk .dif .xml .sdc .sxc | Container and header signatures | Recognized | Open in QuillGrid. |
+| Quattro Pro, Apple Numbers, Gnumeric, SYLK, DIF, Excel 2003 XML, StarCalc | various | .qpw .wb1-3 .wq1-2 .numbers .gnumeric .slk .dif .xml .sdc .sxc | Container and header signatures | Recognized | Open in Anne's Grid. |
 | Microsoft PowerPoint | 2007-current | .pptx .pptm .ppsx .potx | ZIP with `ppt/presentation.xml` | One section per slide: title as Heading 1, text with bullet levels, tables, pictures, speaker notes | Slide layout, theme and animations are not kept. |
 | OpenDocument presentation | 1.0-1.3 | .odp .otp .fodp | `mimetype` | As above | As above. |
 | Microsoft PowerPoint | 97-2003 | .ppt .pps .pot | OLE2 `PowerPoint Document` | Titles and body text per slide | Pictures and tables are not read. PowerPoint 2-4 files are recognized but not imported. |
-| Apple Keynote, Corel Presentations, Lotus Freelance, StarImpress | various | .key .shw .prz .sdd .sxi | Container signatures (Freelance: extension only) | Recognized | Open in QuillStage. |
+| Apple Keynote, Corel Presentations, Lotus Freelance, StarImpress | various | .key .shw .prz .sdd .sxi | Container signatures (Freelance: extension only) | Recognized | Open in Anne's Stage. |
 | Internet email | RFC 822/5322, MIME | .eml .msg (text) .nws | RFC 5322 header block | Header block (subject, from, to, cc, date), HTML or text body with inline pictures, attachment list (pictures shown) | Encrypted or signed (S/MIME, PGP) bodies show as attachments. |
 | Apple Mail | 2-current | .emlx | Byte count line, then RFC 5322 | As above | |
 | mbox mailboxes | all | .mbox .mbx (none) | `From ` separator lines | Each message in its own section (up to 500) | |
 | Microsoft Outlook message | 97-current | .msg .oft | OLE2 `__substg1.0_*` property streams | As for email; HTML, plain or compressed RTF body | |
 | TNEF (winmail.dat) | | .dat | `78 9F 3E 22` | Subject, sender, date, body and attachment names | |
-| Outlook data files, Outlook Express folders | | .pst .ost .dbx | `!BDN`, `CF AD 12 FE` | Recognized | Open in QuillPost. |
+| Outlook data files, Outlook Express folders | | .pst .ost .dbx | `!BDN`, `CF AD 12 FE` | Recognized | Open in Anne's Post. |
 
 ## XML, archive and text formats
 

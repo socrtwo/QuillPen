@@ -1,6 +1,6 @@
 {
-  "name": "QuillPen",
-  "short_name": "QuillPen",
+  "name": "Anne's Pen",
+  "short_name": "Anne's Pen",
   "description": "An open-source word processor with a complete, customizable command library.",
   "id": "./",
   "start_url": "./",

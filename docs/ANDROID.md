@@ -1,6 +1,6 @@
-# QuillPen for Android
+# Anne's Pen for Android
 
-The Android app is the QuillPen web core (TypeScript/Vite, built into `dist/`) wrapped with
+The Android app is the Anne's Pen web core (TypeScript/Vite, built into `dist/`) wrapped with
 [Capacitor 8](https://capacitorjs.com/). The native project lives in `android/` and is committed;
 `npx cap sync android` copies the web build into it and regenerates the Capacitor plugin glue.
 
@@ -62,7 +62,7 @@ Publishing:
   prerelease). The workflow warns if the tag does not match `package.json`.
 - **Prerelease from any branch, without tagging:** Actions -> *Android* -> *Run workflow*, choose the
   branch, tick **prerelease**. This publishes a GitHub prerelease called
-  `QuillPen <version> (build <run number>)` under the tag `v<version>-build.<run number>` pointing at
+  `Anne's Pen <version> (build <run number>)` under the tag `v<version>-build.<run number>` pointing at
   that commit.
 
 ## Signing
@@ -90,7 +90,7 @@ keytool -genkeypair -v \
   -keystore quillpen-release.jks \
   -alias quillpen \
   -keyalg RSA -keysize 4096 -validity 10000 \
-  -dname "CN=QuillPen, O=QuillPen, C=US"
+  -dname "CN=Anne's Pen, O=Anne's Pen, C=US"
 ```
 
 Keep the `.jks` file and its passwords somewhere safe and **never commit it** (`*.jks` and `*.keystore`
@@ -141,11 +141,11 @@ The `.aab` is for Google Play only; it cannot be installed directly.
 - **Open / Save As** use the system document picker (Storage Access Framework), so files in Drive,
   Dropbox, SD cards, etc. work and no storage permission is needed. Ctrl+S writes back to the same
   document via a persisted URI permission.
-- **Open with QuillPen** for `.docx`, `.odt`, `.rtf`, `.md`, `.txt`, `.html`, `.epub` and `.qpd`
-  (`ACTION_VIEW`), and **Share to QuillPen** (`ACTION_SEND`, files or plain text).
+- **Open with Anne's Pen** for `.docx`, `.odt`, `.rtf`, `.md`, `.txt`, `.html`, `.epub` and `.qpd`
+  (`ACTION_VIEW`), and **Share to Anne's Pen** (`ACTION_SEND`, files or plain text).
 - **Print** goes through Android's print service, which also offers *Save as PDF*.
 - **Share** sends the exported file to any app via the share sheet.
-- The activity is `singleTask`, so opening another file while QuillPen runs delivers it to the running
+- The activity is `singleTask`, so opening another file while Anne's Pen runs delivers it to the running
   instance (`fileOpened` event).
 
 ## Native plugin API (`QuillNative`)
@@ -177,7 +177,7 @@ Notes:
 
 ## App icon
 
-The launcher icon is the Quill suite's word-processor icon (a white page with blue lines and a white quill on a
+The launcher icon is the Anne's Office suite's word-processor icon (a white page with blue lines and a white quill on a
 blue tile, background `#2A57B8`). Its sources are `resources/icon.svg` (full tile), `resources/icon-foreground.svg`
 (adaptive-icon foreground) and `resources/icon-background.txt` (adaptive background colour), copied from the
 suite's icon set. `npm run icons` (`scripts/gen-android-icons.mjs`, then `scripts/gen-platform-icons.mjs`) writes:

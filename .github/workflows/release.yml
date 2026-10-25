@@ -1,6 +1,6 @@
 name: Release
 
-# Builds QuillPen for every platform and publishes one GitHub release:
+# Builds Anne's Pen for every platform and publishes one GitHub release:
 #   Web (zip + installable PWA)        Windows (installer x64/arm64, portable x64)
 #   macOS (universal .dmg/.zip)        Linux x64/arm64/armv7l (AppImage, .deb): desktop Linux,
 #   iOS (unsigned .ipa)                Raspberry Pi OS (arm64, armhf) and ChromeOS (Linux apps)
@@ -165,7 +165,7 @@ jobs:
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
           target_commitish: ${{ github.sha }}
-          name: QuillPen ${{ steps.meta.outputs.tag }}
+          name: Anne's Pen ${{ steps.meta.outputs.tag }}
           prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease || contains(github.ref_name, '-') }}
           generate_release_notes: true
           body: |

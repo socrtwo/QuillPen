@@ -1,6 +1,6 @@
 {
   "appId": "io.github.socrtwo.quillpen",
-  "appName": "QuillPen",
+  "appName": "Anne's Pen",
   "webDir": "dist",
   "android": {
     "allowMixedContent": false,

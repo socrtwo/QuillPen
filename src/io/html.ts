@@ -681,7 +681,7 @@ export function docToHtml(doc: PMNode, opts: ExportOptions): string {
   const metas = [
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
-    '<meta name="generator" content="QuillPen">',
+    '<meta name="generator" content="Anne\'s Pen">',
   ];
   if (author) metas.push(`<meta name="author" content="${escapeHtml(author)}">`);
   if (settings.properties.subject) metas.push(`<meta name="subject" content="${escapeHtml(settings.properties.subject)}">`);

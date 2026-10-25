@@ -514,7 +514,7 @@ const RULES: SniffRule[] = [
   R('lrf', 'Sony BBeB e-book', DOC, ['lrf'], (c) => (c.at(0, 'L\0R\0F\0') ? 0.95 : 0)),
   R('pdf', 'PDF document', DOC, ['pdf', 'ai'], (c) => (c.head.slice(0, 1024).includes('%PDF-') ? 0.99 : 0)),
   R('webarchive', 'Safari web archive', DOC, ['webarchive'], (c) => (c.at(0, 'bplist00') && c.bytes.length < 50e6 && /WebMainResource/.test(new TextDecoder('latin1').decode(c.bytes.subarray(0, 200000))) ? 0.9 : 0)),
-  R('qpd', 'QuillPen document', DOC, ['qpd', 'json'], (c) => (/^\s*\{\s*"(type|qf)"/.test(c.head) ? 0.95 : 0)),
+  R('qpd', 'Anne\'s Pen document', DOC, ['qpd', 'json'], (c) => (/^\s*\{\s*"(type|qf)"/.test(c.head) ? 0.95 : 0)),
   R('html', 'Web page (HTML)', DOC, ['html', 'htm', 'xhtml', 'xht', 'shtml', 'php', 'asp'], (c) => {
     if (c.binary()) return 0;
     const t = c.text().slice(0, 4096).toLowerCase();

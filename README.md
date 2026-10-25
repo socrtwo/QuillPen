@@ -1,6 +1,6 @@
-# QuillPen
+# Anne's Pen
 
-*Part of the Quill suite: **QuillPen** (documents), [QuillGrid](https://github.com/socrtwo/QuillGrid) (spreadsheets), [QuillPost](https://github.com/socrtwo/QuillPost) (email) and [QuillStage](https://github.com/socrtwo/QuillStage) (presentations). Formerly named QuillForge; its .qfd/.qfde documents, settings and drafts carry over.*
+*Part of the Anne's Office suite: **Anne's Pen** (documents), [Anne's Grid](https://github.com/socrtwo/QuillGrid) (spreadsheets), [Anne's Post](https://github.com/socrtwo/QuillPost) (email) and [Anne's Stage](https://github.com/socrtwo/QuillStage) (presentations). Formerly named QuillForge; its .qfd/.qfde documents, settings and drafts carry over.*
 
 An original, open-source word processor for Android (and the web) whose goal is simple: **no missing commands**. Every feature is a command, and every command can be put on the Quick Access Bar, on your own tab, on a keyboard shortcut, or in a macro, which is the full-library customization that mobile and online office apps leave out.
 
@@ -25,7 +25,7 @@ Each [release](../../releases) has builds for:
 
 [docs/INSTALL.md](docs/INSTALL.md) has the steps for each. To build it yourself, including the APK on the phone itself with Termux, see [docs/BUILD.md](docs/BUILD.md).
 
-On Android, QuillPen registers for *Open with* and *Share to* on .docx, .doc, .odt, .rtf, .md, .txt, .html and .epub files. It uses the Android system file picker, so files on the device, SD card, Google Drive, Dropbox and similar providers all work. **Save** writes back to the same file.
+On Android, Anne's Pen registers for *Open with* and *Share to* on .docx, .doc, .odt, .rtf, .md, .txt, .html and .epub files. It uses the Android system file picker, so files on the device, SD card, Google Drive, Dropbox and similar providers all work. **Save** writes back to the same file.
 
 ## Features
 
@@ -76,7 +76,7 @@ Ireland, India, South Africa and other countries that follow British spelling us
 
 **Developer.** Macro recorder (records commands and typing), a JavaScript macro editor with a document API, and content controls with form protection and CSV export of form data.
 
-**Files.** Import and export .docx, .odt, .fodt, .rtf, .html, Markdown (GFM), .txt, .epub, and the native .qpd format. Files are recognized by their content, whatever their name or extension: a WordPerfect file called .doc, or a file with no extension at all, opens as what it is, with a short note when the name disagrees. Historical word processors open with their formatting: Word 1.x–2003 for Windows (including 6.0/95 and East Asian editions), Word for DOS, Windows Write, Word for Macintosh, WordPerfect 4.2–X9, Microsoft Works, Kingsoft WPS, Ami Pro, Lotus Word Pro, MacWrite, WriteNow, ClarisWorks, WordStar, XyWrite, DisplayWrite (DCA-RFT), MultiMate and Hangul (HWP). Spreadsheets (Excel, OpenDocument, CSV, dBASE, Lotus 1-2-3), presentations (PowerPoint, OpenDocument) and email (.eml, .msg, mbox, MHTML, winmail.dat) can be handed to the sister apps QuillGrid, QuillStage and QuillPost, or imported as tables, slide sections or a message. See [docs/FORMATS.md](docs/FORMATS.md) for every format, its detection signature and its fidelity. AES-256 encrypted .qpde is also supported. PDF goes through the system print service ("Save as PDF"). Other features: autosave drafts with crash recovery, version history snapshots with compare and restore, document inspector, templates, and multiple open documents in tabs.
+**Files.** Import and export .docx, .odt, .fodt, .rtf, .html, Markdown (GFM), .txt, .epub, and the native .qpd format. Files are recognized by their content, whatever their name or extension: a WordPerfect file called .doc, or a file with no extension at all, opens as what it is, with a short note when the name disagrees. Historical word processors open with their formatting: Word 1.x–2003 for Windows (including 6.0/95 and East Asian editions), Word for DOS, Windows Write, Word for Macintosh, WordPerfect 4.2–X9, Microsoft Works, Kingsoft WPS, Ami Pro, Lotus Word Pro, MacWrite, WriteNow, ClarisWorks, WordStar, XyWrite, DisplayWrite (DCA-RFT), MultiMate and Hangul (HWP). Spreadsheets (Excel, OpenDocument, CSV, dBASE, Lotus 1-2-3), presentations (PowerPoint, OpenDocument) and email (.eml, .msg, mbox, MHTML, winmail.dat) can be handed to the sister apps Anne's Grid, Anne's Stage and Anne's Post, or imported as tables, slide sections or a message. See [docs/FORMATS.md](docs/FORMATS.md) for every format, its detection signature and its fidelity. AES-256 encrypted .qpde is also supported. PDF goes through the system print service ("Save as PDF"). Other features: autosave drafts with crash recovery, version history snapshots with compare and restore, document inspector, templates, and multiple open documents in tabs.
 
 ### Innovations from other word processors
 
@@ -94,7 +94,7 @@ Ireland, India, South Africa and other countries that follow British spelling us
 | OCR clean-up (join broken lines, de-hyphenate, strip running heads and page numbers, ligature fixes), typographic clean-up, sort/dedupe/extract tools | Publishing and OCR workflows |
 | Metric-compatible open fonts substituted for Calibri, Cambria, Times New Roman, Arial, Courier New, Georgia and Garamond | Document-fidelity practice in open-source suites |
 
-**Recovery.** When a document is damaged, QuillPen recovers it instead of refusing to open it. The engine is the Word Recovery pipeline: S2 file identification, local-header ZIP salvage with ImmortalInflate, CRC checks, InvalidTags → ValidTags fixes, XML healing, an RTF parser, Word 97 piece-table text, and a strings scan. A repaired package re-opens with its formatting, and the recovery report lists what each method found.
+**Recovery.** When a document is damaged, Anne's Pen recovers it instead of refusing to open it. The engine is the Word Recovery pipeline: S2 file identification, local-header ZIP salvage with ImmortalInflate, CRC checks, InvalidTags → ValidTags fixes, XML healing, an RTF parser, Word 97 piece-table text, and a strings scan. A repaired package re-opens with its formatting, and the recovery report lists what each method found.
 
 **AI.** The AI tab can draft, continue writing and rewrite (with alternatives), change tone or style, edit by instruction, shorten, expand, and turn text into lists or tables. It also proofreads and repairs OCR as tracked changes, and gives clarity and style-guide notes as comments. It can summarize, list action items and answer questions about the document. It translates a selection, a whole document or side-by-side. It suggests sources and flags claims to verify. It gives editor feedback, reader reactions and rubric grades, writes alt text, transcribes images, keeps story notes, and has a prompt library. With **several AIs** chosen (AI ▸ Choose AIs), each request goes to all of them: either one AI (the master) combines their answers, or they deliberate in a Quaker-style consensus, where a clerk words the answer and each AI unites with it, stands aside or blocks until no one blocks. The AI pane can show how each AI answered; only the final answer goes into the document.
 
@@ -137,7 +137,7 @@ CI (`.github/workflows/android.yml`) type-checks, tests, builds the web app, and
 
 Browser checks: `npm run build && npx vite preview --port 4173`, then `node tests/e2e/smoke.mjs`, `node tests/e2e/all-commands.mjs` (executes every command and menu variant), `node tests/e2e/visual.mjs`, `node tests/e2e/io.mjs`, `node tests/e2e/ai.mjs` (AI features against a mock OpenAI/Anthropic/Gemini server) and `node tests/e2e/dictionaries.mjs` (downloads a real dictionary). The desktop app: `xvfb-run -a node tests/e2e/desktop.mjs`. Layout on phones (system bars, keyboard, 320–915 px): `npm run e2e:layout` (starts its own dev server).
 
-QuillPost, the suite's email app, can use this editor for message bodies: see [docs/EMBED.md](docs/EMBED.md).
+Anne's Post, the suite's email app, can use this editor for message bodies: see [docs/EMBED.md](docs/EMBED.md).
 
 ## Project language
 
@@ -145,4 +145,4 @@ The interface, code comments and documentation use American English. The app its
 
 ## Legal
 
-QuillPen is an independent, clean-room project released under the MIT License. It is not affiliated with, endorsed by, or sponsored by Microsoft, Google, Apple, Corel, The Document Foundation, any AI provider, or any other vendor. Product names appear only to describe file-format compatibility or the origin of an idea (nominative use). The interface, icons (Material Symbols, Apache 2.0), templates, styles and text are original or openly licensed. See [docs/LEGAL.md](docs/LEGAL.md).
+Anne's Pen is an independent, clean-room project released under the MIT License. It is not affiliated with, endorsed by, or sponsored by Microsoft, Google, Apple, Corel, The Document Foundation, any AI provider, or any other vendor. Product names appear only to describe file-format compatibility or the origin of an idea (nominative use). The interface, icons (Material Symbols, Apache 2.0), templates, styles and text are original or openly licensed. See [docs/LEGAL.md](docs/LEGAL.md).

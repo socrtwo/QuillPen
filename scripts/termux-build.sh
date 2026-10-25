@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# Build the QuillPen Android APK on an Android device with Termux (https://termux.dev, the
+# Build the Anne's Pen Android APK on an Android device with Termux (https://termux.dev, the
 # F-Droid or GitHub build; the Play Store build is outdated).
 #
 #   curl -fsSLO https://raw.githubusercontent.com/socrtwo/QuillPen/main/scripts/termux-build.sh

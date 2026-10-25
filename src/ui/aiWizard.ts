@@ -4,7 +4,7 @@
  * The wizard opens the provider's sign-up, key or billing page in the default browser. It
  * cannot read that browser: the key comes back by
  *   - OpenRouter sign-in (OAuth PKCE): fully automatic, no copy and paste;
- *   - the clipboard: when the user returns to QuillPen after copying a key, the wizard reads
+ *   - the clipboard: when the user returns to Anne's Pen after copying a key, the wizard reads
  *     the clipboard once (if allowed), recognizes the key by its format, tests it, saves it and
  *     clears it from the clipboard;
  *   - pasting into the key field.
@@ -21,7 +21,7 @@ import { openExternal, readClipboardText, writeClipboardText, onAppResume, isNat
 
 const SECTIONS: { title: string; help: string; ids: string[] }[] = [
   { title: 'Free, no account', help: 'Runs on this device. Nothing you write leaves it.', ids: ['device', 'builtin'] },
-  { title: 'Free with a free account', help: 'Cloud models with a free tier. Sign up, create a key, and QuillPen picks it up.', ids: ['openrouter', 'gemini', 'groq', 'mistral', 'cerebras', 'sambanova', 'zai', 'nvidia', 'cloudflare', 'cohere'] },
+  { title: 'Free with a free account', help: 'Cloud models with a free tier. Sign up, create a key, and Anne\'s Pen picks it up.', ids: ['openrouter', 'gemini', 'groq', 'mistral', 'cerebras', 'sambanova', 'zai', 'nvidia', 'cloudflare', 'cohere'] },
   { title: 'On your own computer', help: 'Free open models served from a PC or Mac on your network.', ids: ['ollama', 'lmstudio'] },
   { title: 'Paid services', help: 'Pay-as-you-go keys from the major labs and clouds.', ids: ['openai', 'anthropic', 'deepseek', 'xai', 'perplexity', 'together', 'fireworks', 'huggingface', 'moonshot', 'qwen', 'azure', 'bedrock', 'custom'] },
 ];
@@ -39,7 +39,7 @@ export async function openAiSetup(app: App, opts: { provider?: string; reason?: 
     reset();
     clear(root);
     if (opts.reason) root.append(h('p', { class: 'qf-ai-reason' }, opts.reason));
-    root.append(h('p', { class: 'qf-help' }, 'Pick where QuillPen\'s AI features should run. You can add several and switch at any time (AI ▸ Providers & Models).'));
+    root.append(h('p', { class: 'qf-help' }, 'Pick where Anne\'s Pen\'s AI features should run. You can add several and switch at any time (AI ▸ Providers & Models).'));
     const s = aiSettings();
     for (const sec of SECTIONS) {
       root.append(h('h3', null, sec.title), h('p', { class: 'qf-help' }, sec.help));
@@ -91,7 +91,7 @@ export async function openAiSetup(app: App, opts: { provider?: string; reason?: 
     if (p.links.download) actions.append(h('button', { class: 'qf-btn', onclick: () => open(p.links.download, `Install ${p.name} on your computer, start it, then come back and press Test & Save.`) }, icon('download'), ' Download'));
     if (p.needsKey && p.links.keys) {
       if (p.free === 'free' || p.free === 'trial') {
-        actions.append(h('button', { class: 'qf-btn', onclick: () => open(p.links.keys || p.links.signup, `Create a free account if asked, create an API key, and copy it. Then come back here${aiSettings().clipboardWatch ? ': QuillPen will pick the key up from the clipboard' : ' and paste it below'}.`) }, icon('key'), ' Create a free key'));
+        actions.append(h('button', { class: 'qf-btn', onclick: () => open(p.links.keys || p.links.signup, `Create a free account if asked, create an API key, and copy it. Then come back here${aiSettings().clipboardWatch ? ': Anne\'s Pen will pick the key up from the clipboard' : ' and paste it below'}.`) }, icon('key'), ' Create a free key'));
       }
       actions.append(h('button', { class: 'qf-btn', onclick: () => open(p.links.billing || p.links.keys, `Add a payment method or credits, then create an API key and copy it. Come back here when it is copied.`) }, icon('credit_card'), p.free === 'paid' ? ' Create a paid key' : ' Upgrade to paid'));
       actions.append(h('button', { class: 'qf-btn', onclick: () => open(p.links.keys, p.keyViewable ? 'Copy your existing key from the list, then come back here.' : `${p.name} shows each key only once, when it is created. If you no longer have it, create a new key (and delete the old one), copy it, and come back.`) }, icon('manage_search'), ' Find my existing key'));
@@ -115,7 +115,7 @@ export async function openAiSetup(app: App, opts: { provider?: string; reason?: 
       void getApiKey(p.id).then((k) => { if (k) { keyInput.placeholder = `Saved key ${maskKey(k)} (leave empty to keep)`; } });
     }
     const watch = h('input', { type: 'checkbox', checked: aiSettings().clipboardWatch, onchange: () => saveAiSettings((s) => { s.clipboardWatch = watch.checked; }) }) as HTMLInputElement;
-    if (p.needsKey) root.append(h('label', { class: 'qf-check' }, watch, ' When I come back to QuillPen, look for the copied key in the clipboard'));
+    if (p.needsKey) root.append(h('label', { class: 'qf-check' }, watch, ' When I come back to Anne\'s Pen, look for the copied key in the clipboard'));
     const makeActive = h('input', { type: 'checkbox', checked: !aiSettings().active || aiSettings().active === p.id }) as HTMLInputElement;
     root.append(h('label', { class: 'qf-check' }, makeActive, ' Use this provider for AI commands'));
     root.append(h('div', { class: 'qf-row' }, h('button', { class: 'qf-btn qf-primary', onclick: () => void testAndSave() }, icon('verified'), ' Test & Save')), status);
@@ -182,7 +182,7 @@ export async function openAiSetup(app: App, opts: { provider?: string; reason?: 
       try {
         const { startOpenRouterSignIn } = await import('../ai/oauth');
         const session = await startOpenRouterSignIn();
-        say('Sign in on openrouter.ai in your browser. QuillPen receives the key automatically when you approve.');
+        say('Sign in on openrouter.ai in your browser. Anne\'s Pen receives the key automatically when you approve.');
         const manual = h('input', { type: 'text', class: 'qf-input', placeholder: 'If nothing happens: paste the address from the browser (…?code=…) here' }) as HTMLInputElement;
         const go = h('button', { class: 'qf-btn', onclick: () => session.complete(manual.value).catch((err) => say(String(err.message || err), 'err')) }, 'Finish');
         status.after(h('div', { class: 'qf-row qf-ai-manual' }, manual, go));
@@ -291,7 +291,7 @@ export async function openAiSetup(app: App, opts: { provider?: string; reason?: 
     root.append(
       h('p', { class: 'qf-help' }, p.kind === 'local' || p.kind === 'builtin'
         ? 'Text you send to AI commands is processed on this device.'
-        : `When you use an AI command, QuillPen sends the text it needs directly from this device to ${host(resolveBaseUrl(p, cfg || {}))}. QuillPen has no server of its own. ${p.name}'s terms and privacy policy apply${p.free === 'free' ? '; free tiers may use prompts to improve their models' : ''}.`),
+        : `When you use an AI command, Anne's Pen sends the text it needs directly from this device to ${host(resolveBaseUrl(p, cfg || {}))}. Anne's Pen has no server of its own. ${p.name}'s terms and privacy policy apply${p.free === 'free' ? '; free tiers may use prompts to improve their models' : ''}.`),
       h('div', { class: 'qf-row' },
         h('button', { class: 'qf-btn', onclick: async () => {
           out.textContent = '…';

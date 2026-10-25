@@ -92,7 +92,7 @@ export function renderBackstage(app: App, root: HTMLElement, page: string): void
       body.append(h('h1', null, page === 'saveas' ? 'Save As' : 'Export'), h('p', { class: 'qf-help' }, page === 'saveas' ? 'Choose a format. The system file dialog lets you pick the folder (device, SD card, Drive, Dropbox…).' : 'Save a copy in another format; the current document keeps its file.'));
       const grid = h('div', { class: 'qf-bs-cards' });
       for (const f of FORMATS.filter((x) => x.canExport)) grid.appendChild(card(f.label, f.note || `.${f.ext[0]}`, f.id === 'pdf' ? 'picture_as_pdf' : 'description', () => (page === 'saveas' ? app.exec('file.saveAsFormat', f.id) : f.id === 'pdf' ? app.exec('file.exportPdf') : app.exec(`file.export.${f.id}`))));
-      grid.appendChild(card('Encrypted QuillPen (.qpde)', 'AES-256 password protected', 'enhanced_encryption', () => app.exec('file.encrypt')));
+      grid.appendChild(card('Encrypted Anne\'s Pen (.qpde)', 'AES-256 password protected', 'enhanced_encryption', () => app.exec('file.encrypt')));
       grid.appendChild(card('Template', 'Reuse this document as a starting point', 'bookmark_add', () => app.exec('file.saveTemplate')));
       body.appendChild(grid);
       break;

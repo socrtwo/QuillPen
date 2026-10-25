@@ -98,7 +98,7 @@ function networkError(def: ProviderDef, e: unknown, url = def.baseUrl, native = 
   // cleartext policy, mixed content, the desktop content policy).
   const httpPage = typeof location !== 'undefined' && location.protocol === 'http:';
   if (/^http:\/\//i.test(url) && !/^http:\/\/(localhost|127\.0\.0\.1|10\.0\.2\.2|\[::1\])([:/]|$)/i.test(url) && !httpPage) {
-    return new AiError(`Could not reach ${url}: QuillPen can use plain http:// only for a server on this device (localhost). Serve the other computer's AI server over https instead. (${why})`, 'network');
+    return new AiError(`Could not reach ${url}: Anne's Pen can use plain http:// only for a server on this device (localhost). Serve the other computer's AI server over https instead. (${why})`, 'network');
   }
   if (def.kind === 'openai' && /localhost|127\.0\.0\.1|192\.168\.|10\./.test(url)) {
     return new AiError(`Could not reach the local server. Is it running, and is cross-origin access enabled? (${why})`, 'network');

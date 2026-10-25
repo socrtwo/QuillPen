@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Launch screen: the QuillPen icon artwork centered on brand navy. -->
+<!-- Launch screen: the Anne's Pen icon artwork centered on brand navy. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/splash_background" />
     <item

@@ -1,36 +1,36 @@
-# Embedded editor for QuillPost
+# Embedded editor for Anne's Post
 
-QuillPost, the suite's email app, can edit a message body in a complete copy of this word processor running
-inside QuillPost's own window. The first part of this file is the suite protocol, copied unchanged from the
+Anne's Post, the suite's email app, can edit a message body in a complete copy of this word processor running
+inside Anne's Post's own window. The first part of this file is the suite protocol, copied unchanged from the
 shared specification (both apps implement it exactly); the second part describes this app's side and how to
 try it locally.
 
-The application is still called QuillPen in this repository; the protocol and the Android authority already
-use the final name, QuillPen.
+The application is still called Anne's Pen in this repository; the protocol and the Android authority already
+use the final name, Anne's Pen.
 
 ---
 
-# QuillPen embedded editor protocol (QuillPost ⇄ QuillPen)
+# Anne's Pen embedded editor protocol (Anne's Post ⇄ Anne's Pen)
 
-QuillPost can edit a message body in a complete, embedded copy of QuillPen when QuillPen is
-installed. The editor runs inside QuillPost's own window (an iframe), so the person never leaves
+Anne's Post can edit a message body in a complete, embedded copy of Anne's Pen when Anne's Pen is
+installed. The editor runs inside Anne's Post's own window (an iframe), so the person never leaves
 the message. Both apps implement this file exactly.
 
-## 1. Locating QuillPen
+## 1. Locating Anne's Pen
 
-| Platform | Where QuillPost finds QuillPen's web build | Detection |
+| Platform | Where Anne's Post finds Anne's Pen's web build | Detection |
 |---|---|---|
-| Android | QuillPen app (applicationId `io.github.socrtwo.quillpen`) exports a read-only ContentProvider, authority `io.github.socrtwo.quillpen.embed`, serving its built web files (`dist/`, i.e. the APK's `public/` assets) by path: `content://io.github.socrtwo.quillpen.embed/index.html`. QuillPost's WebView intercepts requests to `https://quillpen.embed/<path>` (`shouldInterceptRequest`) and answers them from that provider with `ContentResolver.openInputStream`, setting the MIME type from the extension. | `PackageManager.getPackageInfo("io.github.socrtwo.quillpen")` (manifest `<queries><package android:name="io.github.socrtwo.quillpen"/></queries>`) and the provider answering `index.html`. |
-| Desktop (Windows/macOS/Linux) | QuillPen's installer ships its web build unpacked in `resources/embed/` (electron-builder `extraResources`), next to `app.asar`. QuillPost desktop looks in the standard install locations (Windows: `%LOCALAPPDATA%\Programs\QuillPen\resources\embed`, `%PROGRAMFILES%\QuillPen\resources\embed`; macOS: `/Applications/QuillPen.app/Contents/Resources/embed`, `~/Applications/...`; Linux: `/opt/QuillPen/resources/embed`, AppImage users set the folder) or a folder chosen in Settings, and serves it from its local server at `/quillpen-embed/<path>`. | `index.html` exists in that folder. |
+| Android | Anne's Pen app (applicationId `io.github.socrtwo.quillpen`) exports a read-only ContentProvider, authority `io.github.socrtwo.quillpen.embed`, serving its built web files (`dist/`, i.e. the APK's `public/` assets) by path: `content://io.github.socrtwo.quillpen.embed/index.html`. Anne's Post's WebView intercepts requests to `https://quillpen.embed/<path>` (`shouldInterceptRequest`) and answers them from that provider with `ContentResolver.openInputStream`, setting the MIME type from the extension. | `PackageManager.getPackageInfo("io.github.socrtwo.quillpen")` (manifest `<queries><package android:name="io.github.socrtwo.quillpen"/></queries>`) and the provider answering `index.html`. |
+| Desktop (Windows/macOS/Linux) | Anne's Pen's installer ships its web build unpacked in `resources/embed/` (electron-builder `extraResources`), next to `app.asar`. Anne's Post desktop looks in the standard install locations (Windows: `%LOCALAPPDATA%\Programs\QuillPen\resources\embed`, `%PROGRAMFILES%\QuillPen\resources\embed`; macOS: `/Applications/QuillPen.app/Contents/Resources/embed`, `~/Applications/...`; Linux: `/opt/QuillPen/resources/embed`, AppImage users set the folder) or a folder chosen in Settings, and serves it from its local server at `/quillpen-embed/<path>`. | `index.html` exists in that folder. |
 | iOS | Not available (iOS apps cannot read each other's files). The option is hidden. | — |
-| Web | A QuillPen web deployment URL entered in Settings (for example a self-hosted copy). Same-origin or CORS is not needed: only `postMessage` crosses the frame boundary. | URL set and `index.html` loads. |
+| Web | An Anne's Pen web deployment URL entered in Settings (for example a self-hosted copy). Same-origin or CORS is not needed: only `postMessage` crosses the frame boundary. | URL set and `index.html` loads. |
 
 ## 2. Starting the editor
 
-QuillPost loads `<base>/index.html?embed=compose&host=quillpost&v=1` in an `<iframe>` that fills the
+Anne's Post loads `<base>/index.html?embed=compose&host=quillpost&v=1` in an `<iframe>` that fills the
 compose body area (sandbox: `allow-scripts allow-same-origin allow-popups allow-modals allow-downloads`).
 
-In embed mode QuillPen:
+In embed mode Anne's Pen:
 - shows its full ribbon, QAT, AI tab and editing features, but hides File/Backstage commands that
   open, save or close files, the document tabs, and window chrome;
 - shows a slim bar with **Done** (send the result back) and **Cancel**;
@@ -40,11 +40,11 @@ In embed mode QuillPen:
 ## 3. Messages (window.postMessage, JSON objects)
 
 All messages have `type` starting with `quill-embed:` and `v: 1`. Each side checks `event.source`
-is the expected window; QuillPost also checks `event.origin` against the base it loaded.
+is the expected window; Anne's Post also checks `event.origin` against the base it loaded.
 
 | Direction | type | Fields | Meaning |
 |---|---|---|---|
-| Pen → Post | `quill-embed:ready` | `app: "QuillPen"`, `version` | Editor loaded and listening. Post then sends `load`. |
+| Pen → Post | `quill-embed:ready` | `app: "Anne's Pen"`, `version` | Editor loaded and listening. Post then sends `load`. |
 | Post → Pen | `quill-embed:load` | `html` (message body HTML), `subject?`, `theme?: "light"\|"dark"`, `lang?` | Replace the editor content. |
 | Pen → Post | `quill-embed:changed` | `dirty: true` | Content changed (debounced, at most every 2 s). |
 | Post → Pen | `quill-embed:request` | `id` | Ask for the current content without closing (Send pressed). |
@@ -55,13 +55,13 @@ is the expected window; QuillPost also checks `event.origin` against the base it
 `html` is a fragment suitable for an email body: inline styles only (no `<style>` blocks that
 depend on classes, no scripts), images as `data:` URIs or `cid:` references unchanged.
 
-## 4. QuillPost user interface
+## 4. Anne's Post user interface
 
-- Settings ▸ Compose: **Edit messages in QuillPen** (Off / Ask / Always), shown only when QuillPen
-  is detected; on desktop and web, a field to choose the QuillPen folder or URL.
-- Compose window: a **QuillPen** button (also a command, so it can be placed on the QAT) that opens
+- Settings ▸ Compose: **Edit messages in Anne's Pen** (Off / Ask / Always), shown only when Anne's Pen
+  is detected; on desktop and web, a field to choose the Anne's Pen folder or URL.
+- Compose window: a **Anne's Pen** button (also a command, so it can be placed on the QAT) that opens
   the current body in the embedded editor; the built-in editor stays available.
-- If QuillPen does not answer `ready` within 8 s, QuillPost shows an error and falls back to the
+- If Anne's Pen does not answer `ready` within 8 s, Anne's Post shows an error and falls back to the
   built-in editor.
 
 ---
@@ -117,7 +117,7 @@ works for every file. `query` reports `_display_name` and, when known, `_size`.
 ### Desktop
 
 `electron-builder.config.cjs` copies `dist/` unpacked to `resources/embed/` next to `app.asar`
-(`extraResources`), which is where QuillPost desktop looks for it.
+(`extraResources`), which is where Anne's Post desktop looks for it.
 
 ### iOS
 
@@ -139,7 +139,7 @@ Not available (see the protocol). Nothing is added to the iOS app.
    Type in the document to see `quill-embed:changed` (at most every 2 s); press **Done** to see
    `quill-embed:done`, or **Cancel** for `quill-embed:cancel`. (The `ready` message went out before the
    listener existed; reload with the listener added from a bookmarklet or a host page to see it.)
-3. To test it as QuillPost does, serve a page from another origin with
+3. To test it as Anne's Post does, serve a page from another origin with
    `<iframe src="http://localhost:5173/?embed=compose&host=quillpost&v=1" sandbox="allow-scripts allow-same-origin allow-popups allow-modals allow-downloads">`,
    wait for `quill-embed:ready` from `iframe.contentWindow`, and answer with `load` addressed to
    `http://localhost:5173`.

@@ -130,7 +130,7 @@ describe('embed protocol', () => {
   it('announces itself, then loads what the host sends', async () => {
     const t = setup();
     t.s.ready();
-    expect(t.sent[0]).toEqual({ msg: { type: 'quill-embed:ready', v: 1, app: 'QuillPen', version: '9.9' }, origin: '*' });
+    expect(t.sent[0]).toEqual({ msg: { type: 'quill-embed:ready', v: 1, app: 'Anne\'s Pen', version: '9.9' }, origin: '*' });
     expect(await t.msg({ type: 'quill-embed:load', v: 1, html: '<p>x</p>', subject: 'Hello', theme: 'dark', lang: 'de-AT' })).toBe(true);
     expect(t.loads).toEqual([{ html: '<p>x</p>', subject: 'Hello', theme: 'dark', lang: 'de-AT' }]);
   });

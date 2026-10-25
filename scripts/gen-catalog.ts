@@ -12,8 +12,8 @@ for (const t of new Set(cmds.map((c) => c.tab))) if (t && !order.includes(t)) or
 const tabName = (t: string) => (t === 'Backstage' ? 'File' : t === 'Table' ? 'Table Tools (contextual)' : t === 'Picture' ? 'Picture Format (contextual)' : t);
 const key = (k: string) => k.replace(/Mod/g, 'Ctrl').replace(/-/g, '+').replace(/\+\+$/, '+-');
 const lines: string[] = [];
-lines.push('# QuillPen Command Reference', '');
-lines.push(`QuillPen ships **${cmds.length} commands**. Every one can be placed on the Quick Access Bar, added to a custom tab, bound to a keyboard shortcut, recorded in a macro, or found with command search (Alt+Q).`, '');
+lines.push('# Anne\'s Pen Command Reference', '');
+lines.push(`Anne's Pen ships **${cmds.length} commands**. Every one can be placed on the Quick Access Bar, added to a custom tab, bound to a keyboard shortcut, recorded in a macro, or found with command search (Alt+Q).`, '');
 lines.push(`${cmds.filter((c) => !inTabs.has(c.id)).length} of them are "Commands Not in the Tabs" — reachable through the Quick Access Bar chooser, Customize Tabs, the command search, or menus — mirroring how desktop suites expose their full command library.`, '');
 lines.push('This file is generated from the source by `npm run catalog`.', '');
 lines.push('## Default tab layout', '');
