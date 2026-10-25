@@ -28,7 +28,7 @@ const SCHEME = 'app';
 // The page's origin keeps the app's former name so settings, drafts and keys stored by earlier
 // versions stay readable.
 const ORIGIN = `${SCHEME}://quillforge`; // rename:keep
-const OPENABLE = ['docx', 'docm', 'dotx', 'dotm', 'doc', 'dot', 'wbk', 'asd', 'odt', 'ott', 'fodt', 'rtf', 'html', 'htm', 'md', 'markdown', 'txt', 'epub', 'qpd', 'qpde', 'json', // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+const OPENABLE = ['docx', 'docm', 'dotx', 'dotm', 'doc', 'dot', 'wbk', 'asd', 'odt', 'ott', 'fodt', 'rtf', 'html', 'htm', 'md', 'markdown', 'txt', 'epub', 'qpd', 'qpde', 'json', // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
   // Legacy word processors (opened by content, so the extension is only a hint)
   'wpd', 'wp', 'wp4', 'wp5', 'wp6', 'wpt', 'wps', 'wri', 'lwp', 'sam', 'mcw', 'cwk', 'wn', 'ws', 'ws4', 'ws5', 'ws6', 'ws7', 'xy', 'xyw', 'rft', 'dca', 'hwp',
   // Spreadsheets, presentations and email (imported as documents, or handed to the sister apps)

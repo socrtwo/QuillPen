@@ -24,7 +24,7 @@ module.exports = {
     { ext: 'rtf', name: 'Rich Text Document', role: 'Editor', mimeType: 'application/rtf' },
     { ext: 'doc', name: 'Word 97-2003 Document', role: 'Viewer', mimeType: 'application/msword' },
     { ext: 'qpd', name: 'Anne\'s Pen Document', role: 'Editor' },
-    { ext: 'qfd', name: 'QuillPen Document (QuillForge)', role: 'Editor' }, // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+    { ext: 'qfd', name: 'Anne\'s Pen Document (QuillForge)', role: 'Editor' }, // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
     { ext: ['wpd', 'wp5', 'wp6'], name: 'WordPerfect Document', role: 'Viewer', mimeType: 'application/vnd.wordperfect' },
     { ext: 'wps', name: 'Microsoft Works Document', role: 'Viewer', mimeType: 'application/vnd.ms-works' },
     { ext: 'wri', name: 'Windows Write Document', role: 'Viewer', mimeType: 'application/x-mswrite' },

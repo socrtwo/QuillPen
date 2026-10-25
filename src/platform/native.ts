@@ -263,7 +263,7 @@ export async function onBackButton(cb: () => boolean): Promise<void> {
 // Files are identified by content, so the picker offers every type it can (and "All files").
 export const OPEN_ACCEPT = [...new Set([
   ...'docx docm dotx dotm doc dot wbk asd odt ott fodt rtf html htm md markdown txt epub qpd json'.split(' '),
-  'qfd', 'qfde', // rename:keep — QuillPen was named QuillForge; its .qfd/.qfde files still open
+  'qfd', 'qfde', // rename:keep — Anne's Pen was named QuillForge; its .qfd/.qfde files still open
   ...'wpd wp wp4 wp5 wp6 wpt wps wri lwp sam mcw cwk wn ws ws4 ws5 ws6 ws7 xy xyw rft dca hwp sdw'.split(' '),
   ...'csv tsv xlsx xlsm xls ods dbf wk1 wks pptx ppt odp key eml emlx mbox msg'.split(' '),
   ...OPEN_EXTENSIONS_B,
