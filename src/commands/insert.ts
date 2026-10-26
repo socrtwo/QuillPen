@@ -48,7 +48,7 @@ def([
       doc.forEach((n, pos, i) => { if (end < 0 && n.type === N.page_break) { end = pos + n.nodeSize; blocks = i; } });
       if (end < 0) { toast('No cover page.'); return; }
       // Covers made by Insert ▸ Cover Page start with a marked paragraph; anything else needs confirmation.
-      if (doc.firstChild?.attrs.id !== COVER_ID && !(await confirmDialog('Remove Cover Page', `The document does not start with a cover page inserted by QuillPen. Remove the ${blocks} paragraph(s) before the first page break?`))) return;
+      if (doc.firstChild?.attrs.id !== COVER_ID && !(await confirmDialog('Remove Cover Page', `The document does not start with a cover page inserted by Anne\'s Pen. Remove the ${blocks} paragraph(s) before the first page break?`))) return;
       if (app.state.doc !== doc) return;
       v(app).dispatch(app.state.tr.delete(0, end));
     },

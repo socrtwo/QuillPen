@@ -600,7 +600,7 @@ async function generateImage(app: App): Promise<void> {
   if (!(await ensureProvider(app, 'Generating images needs an AI provider with an image model.'))) return;
   const rp = await resolveProvider();
   if (!rp) return;
-  if (!rp.def.images) { toast(`${rp.def.name} has no image model set up in QuillPen. OpenAI (gpt-image-1) is supported; add it in AI ▸ Set Up AI.`, { ms: 8000 }); return; }
+  if (!rp.def.images) { toast(`${rp.def.name} has no image model set up in Anne\'s Pen. OpenAI (gpt-image-1) is supported; add it in AI ▸ Set Up AI.`, { ms: 8000 }); return; }
   if (!(await privacyCheck())) return;
   const prompt = await promptDialog('Generate Image', 'Describe the picture', '', { type: 'textarea', rows: 3 } as any);
   if (!prompt?.trim()) return;

@@ -6,7 +6,7 @@ shared specification (both apps implement it exactly); the second part describes
 try it locally.
 
 The application is still called Anne's Pen in this repository; the protocol and the Android authority already
-use the final name, QuillPen.
+use the final name, Anne's Pen.
 
 ---
 
