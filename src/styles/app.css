@@ -1,4 +1,4 @@
-/* QuillPen application styles (original design). */
+/* Anne's Pen application styles (original design). */
 :root {
   --bg: #eef1f5; --surface: #ffffff; --surface2: #f6f7f9; --text: #1d2330; --muted: #5b6475; --border: #d6dbe3;
   --accent: #2b4a7e; --accent-2: #f2a541; --accent-soft: #dfe7f3; --on: #c9d7ee; --danger: #b3261e;
@@ -610,7 +610,7 @@ body.qf-zen .qf-titlebar, body.qf-zen .qf-tabs, body.qf-zen .qf-ribbon, body.qf-
 .qf-zen-exit:hover, .qf-zen-exit:focus-visible { opacity: 1; }
 body.qf-zen .qf-zen-exit { display: inline-flex !important; }
 
-/* Embedded editor (QuillPost, ?embed=compose): Done/Cancel bar; no File screen, document name or new-document button. */
+/* Embedded editor (Anne's Post, ?embed=compose): Done/Cancel bar; no File screen, document name or new-document button. */
 .qf-embed-bar { display: flex; align-items: center; gap: 6px; flex: none; min-height: 40px; padding: 3px 8px; background: var(--surface2); border-bottom: 1px solid var(--border); font-size: 13.5px; }
 .qf-embed-bar > .qf-icon { color: var(--accent); }
 .qf-embed-title { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

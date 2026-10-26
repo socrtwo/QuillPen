@@ -477,7 +477,7 @@ describe('LaTeX and lightweight markups', () => {
     const tex = fixture('features.tex');
     const { s, settings } = await open(tex, 'x.tex');
     expect(s.styles).toContain('Heading 1:Café and naïve');
-    expect(s.text).toContain('“Quoted” — QuillPen red bold both');
+    expect(s.text).toContain('“Quoted” — Anne’s Pen red bold both');
     expect(s.marks.has('color')).toBe(true);
     expect(s.tables[0].spans).toEqual(['Wide:2x1', 'Tall:1x2']);
     expect(s.lists).toEqual(['ordered:lower-roman']);

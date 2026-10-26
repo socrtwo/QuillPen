@@ -1,4 +1,4 @@
-# AI in QuillPen
+# AI in Anne's Pen
 
 The **AI** tab has 70 commands. Like every other command, each one can go on the Quick Access Bar, a custom tab or a keyboard shortcut, and macros can record it. AI is optional: nothing is sent anywhere until you set up a provider and run an AI command. You can turn AI off in **AI ▸ AI Settings**.
 
@@ -17,7 +17,7 @@ You can set up several providers and switch between them with **AI ▸ Active AI
 
 ### The on-device model (free, private, offline)
 
-QuillPen downloads a small open model once and runs it on the device with [Transformers.js](https://huggingface.co/docs/transformers.js). It uses WebGPU when the device has it and the CPU (WebAssembly) otherwise. The library comes from cdn.jsdelivr.net (pinned to version 4.2.0) and the model from huggingface.co. After that the model works offline from the browser cache.
+Anne's Pen downloads a small open model once and runs it on the device with [Transformers.js](https://huggingface.co/docs/transformers.js). It uses WebGPU when the device has it and the CPU (WebAssembly) otherwise. The library comes from cdn.jsdelivr.net (pinned to version 4.2.0) and the model from huggingface.co. After that the model works offline from the browser cache.
 
 | Model | Download | Notes |
 |---|---|---|
@@ -36,13 +36,13 @@ The wizard opens the right page in your **default browser**:
 - **Create a paid key**: the billing or credits page.
 - **Find my existing key**: the key list. For services that show a key only once (OpenAI, Anthropic, Groq and most others), the wizard tells you to create a new key, because the old one cannot be shown again.
 
-Then the key comes back to QuillPen in one of three ways:
+Then the key comes back to Anne's Pen in one of three ways:
 
-1. **OpenRouter sign-in: no copying at all.** QuillPen uses OpenRouter's OAuth PKCE flow. You approve in the browser, and OpenRouter sends a one-time code back to QuillPen, which exchanges it for a key.
+1. **OpenRouter sign-in: no copying at all.** Anne's Pen uses OpenRouter's OAuth PKCE flow. You approve in the browser, and OpenRouter sends a one-time code back to Anne's Pen, which exchanges it for a key.
    - Android: the code arrives through a listener that runs only for the sign-in, on `127.0.0.1` (this device only).
    - Web: the code arrives in a callback tab.
    - If your browser blocks the redirect, paste the address bar URL into the wizard.
-2. **The clipboard.** Click the provider's "Copy" button for your key and come back. QuillPen reads the clipboard once and recognizes the key by its format (for example `sk-or-v1-…`, `gsk_…`, `sk-ant-api03-…`, `AIza…`/`AQ.…`). It then tests the key, saves it, and clears it from the clipboard. You can turn this off; Android 12 and later show a "pasted from clipboard" notice when it happens.
+2. **The clipboard.** Click the provider's "Copy" button for your key and come back. Anne's Pen reads the clipboard once and recognizes the key by its format (for example `sk-or-v1-…`, `gsk_…`, `sk-ant-api03-…`, `AIza…`/`AQ.…`). It then tests the key, saves it, and clears it from the clipboard. You can turn this off; Android 12 and later show a "pasted from clipboard" notice when it happens.
 3. **Paste** into the key field.
 
 **Limit:** an app cannot read what is shown in another app's browser. So the wizard does not scrape provider pages. It relies on the clipboard or the OAuth handoff.
@@ -73,7 +73,7 @@ This follows the way a Quaker business meeting makes decisions. The meeting does
 - **stand aside**: they would prefer something different but do not stop the meeting from adopting it; their concern is recorded;
 - **block**: they hold a principled objection that the minute is wrong, and it cannot be adopted as it stands.
 
-In QuillPen, every AI first answers on its own. The clerk (the AI you chose) reads the answers and writes a draft minute. Each AI reads the minute and unites, stands aside or blocks, saying why. If no one blocks, the minute is adopted ("United (3 of 3)", or "United; 1 stood aside"). If someone blocks, the clerk revises the minute to meet the objections that are right, and the AIs consider it again. If an AI still blocks after the last round, you get the clerk's last minute with the warning "The AIs did not reach unity" and each objection, so you can judge for yourself.
+In Anne's Pen, every AI first answers on its own. The clerk (the AI you chose) reads the answers and writes a draft minute. Each AI reads the minute and unites, stands aside or blocks, saying why. If no one blocks, the minute is adopted ("United (3 of 3)", or "United; 1 stood aside"). If someone blocks, the clerk revises the minute to meet the objections that are right, and the AIs consider it again. If an AI still blocks after the last round, you get the clerk's last minute with the warning "The AIs did not reach unity" and each objection, so you can judge for yourself.
 
 ### What you see
 
@@ -85,16 +85,16 @@ Key tests, model lists and the setup wizard's "Try it" always use one AI.
 
 Several AIs cost more. For N AIs, a request makes about N+1 calls in master mode and up to N×(rounds+1)+rounds in consensus (3 AIs and 3 rounds: up to 15). Paid services charge for each call, and usage counts all of them. The settings show this for your choice.
 
-Every service you choose receives the text of each request and, for the master or clerk and in consensus, the other AIs' answers. The settings list every service that will receive the text, and the first time you use a cloud service QuillPen tells you where the text goes. The on-device model can be one of the AIs; it answers one request at a time.
+Every service you choose receives the text of each request and, for the master or clerk and in consensus, the other AIs' answers. The settings list every service that will receive the text, and the first time you use a cloud service Anne's Pen tells you where the text goes. The on-device model can be one of the AIs; it answers one request at a time.
 
 ## Privacy and keys
 
-- QuillPen has no server. Requests go directly from your device to the provider you chose.
+- Anne's Pen has no server. Requests go directly from your device to the provider you chose.
 - **Keys** are stored only on the device:
   - Android: encrypted with AES-256-GCM using a key held in the Android Keystore.
   - Web: in this browser's IndexedDB.
   - Keys never go into settings exports, drafts or documents.
-- The first time you use a cloud provider, QuillPen tells you where your text will go. Before it sends a whole document it asks you first; you can switch that prompt off.
+- The first time you use a cloud provider, Anne's Pen tells you where your text will go. Before it sends a whole document it asks you first; you can switch that prompt off.
 - **AI Settings ▸ Insert AI edits as tracked changes** records every AI change as a revision by "AI (model)", with whole-word changes. Review them with **AI ▸ Review AI Edits**.
 
 ## Varieties of English
@@ -103,7 +103,7 @@ AI commands keep the author's variety of English (American, British, Canadian, A
 
 ## How AI edits are applied
 
-When AI changes text inside a paragraph, QuillPen applies only the words that changed (a word-level diff). Formatting on the words that did not change is kept, and pictures, footnotes and fields inside the paragraph are never deleted. Structured answers (lists, tables, headings) are read as Markdown and become real lists, tables and heading styles.
+When AI changes text inside a paragraph, Anne's Pen applies only the words that changed (a word-level diff). Formatting on the words that did not change is kept, and pictures, footnotes and fields inside the paragraph are never deleted. Structured answers (lists, tables, headings) are read as Markdown and become real lists, tables and heading styles.
 
 ## Feature survey
 

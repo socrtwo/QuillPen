@@ -169,7 +169,7 @@ function markSaved(app: App, tab: DocTab, doc: PMNode) {
   // Edits made while the file was being written are not in it: the tab stays unsaved and keeps its draft.
   if (tab.view.state.doc.eq(doc)) { tab.dirty = false; kvDel('draft:' + tab.id); } else app.scheduleAutosave();
   app.ui.tabsChanged();
-  document.title = `${tab.displayName}${tab.dirty ? ' •' : ''} – QuillPen`;
+  document.title = `${tab.displayName}${tab.dirty ? ' •' : ''} – Anne\'s Pen`;
 }
 
 function hasRichContent(doc: PMNode): boolean {
@@ -426,7 +426,7 @@ def([
   {
     id: 'file.encrypt', label: 'Encrypt with Password…', icon: 'enhanced_encryption', tab: 'Backstage', group: 'Info', noRecord: true,
     run: async (app) => {
-      const r = await openDialog({ title: 'Encrypt Document', help: 'Saves an AES-256-GCM encrypted QuillPen file (.qpde). If you lose the password, the file cannot be recovered.', fields: [{ key: 'p1', label: 'Password', type: 'password' }, { key: 'p2', label: 'Confirm', type: 'password' }], validate: (x) => (!x.p1 ? 'Enter a password.' : x.p1 !== x.p2 ? 'Passwords do not match.' : null) });
+      const r = await openDialog({ title: 'Encrypt Document', help: 'Saves an AES-256-GCM encrypted Anne\'s Pen file (.qpde). If you lose the password, the file cannot be recovered.', fields: [{ key: 'p1', label: 'Password', type: 'password' }, { key: 'p2', label: 'Confirm', type: 'password' }], validate: (x) => (!x.p1 ? 'Enter a password.' : x.p1 !== x.p2 ? 'Passwords do not match.' : null) });
       if (!r) return;
       const { encryptJson } = await import('../util/crypto');
       const data = await encryptJson(app.state.doc.toJSON(), r.p1);
@@ -472,7 +472,7 @@ def([
     id: 'file.options', label: 'Options…', icon: 'settings', tab: 'Backstage', group: 'Options', popular: true, noRecord: true,
     run: async (app) => {
       const p = app.prefs;
-      const r = await openDialog({ title: 'QuillPen Options', wide: true, fields: [
+      const r = await openDialog({ title: 'Anne\'s Pen Options', wide: true, fields: [
         { key: 'h1', type: 'heading', label: 'General' },
         { key: 'author', label: 'User name', type: 'text', value: p.author, half: true },
         { key: 'initials', label: 'Initials', type: 'text', value: p.initials, half: true },
@@ -579,11 +579,11 @@ def([
   { id: 'help.commands', label: 'Command Reference', icon: 'menu_book', tab: 'Help', group: 'Help', noRecord: true, run: (app) => app.ui.showCommandReference() },
   { id: 'help.tour', label: 'Show the Quick Tour', icon: 'tour', tab: 'Help', group: 'Help', noRecord: true, run: (app) => app.ui.tour() },
   {
-    id: 'help.about', label: 'About QuillPen', icon: 'info', tab: 'Help', group: 'Help', noRecord: true,
-    run: () => alertDialog('About QuillPen', h('div', { class: 'qf-msg' },
-      h('p', null, h('b', null, `QuillPen ${__APP_VERSION__}`), ' — an original, open-source word processor (MIT License).'),
+    id: 'help.about', label: 'About Anne\'s Pen', icon: 'info', tab: 'Help', group: 'Help', noRecord: true,
+    run: () => alertDialog('About Anne\'s Pen', h('div', { class: 'qf-msg' },
+      h('p', null, h('b', null, `Anne\'s Pen ${__APP_VERSION__}`), ' — an original, open-source word processor (MIT License).'),
       h('p', null, `${commandCount()} commands, every one available to the Quick Access Bar, custom tabs, keyboard shortcuts, macros and command search.`),
-      h('p', null, 'QuillPen is not affiliated with, endorsed by, or sponsored by Microsoft, Google, Apple, Corel, The Document Foundation, or any other vendor. Product names are used only to describe file-format compatibility.'),
+      h('p', null, 'Anne\'s Pen is not affiliated with, endorsed by, or sponsored by Microsoft, Google, Apple, Corel, The Document Foundation, or any other vendor. Product names are used only to describe file-format compatibility.'),
       h('p', null, 'Open-source components: ProseMirror (MIT), prosemirror-tables (MIT), JSZip (MIT/GPLv3 dual), KaTeX (MIT), nspell (MIT) with the SCOWL American, British, Canadian and Australian English Hunspell dictionaries (MIT and BSD-style), Material Symbols (Apache 2.0), Capacitor (MIT), fonts Carlito, Caladea, Gelasio, EB Garamond, Courier Prime, Libre Baskerville, Lato, Merriweather, Open Sans (SIL OFL 1.1) and Tinos, Arimo, Cousine (Apache 2.0). Their licenses are in Help ▸ Third-Party Notices.'),
     )),
   },
@@ -596,5 +596,5 @@ def([
     },
   },
   { id: 'help.feedback', label: 'Report an Issue', icon: 'bug_report', tab: 'Help', group: 'Help', noRecord: true, run: () => openExternal('https://github.com/socrtwo/QuillPen/issues') },
-  { id: 'help.whatsNew', label: 'What’s New', icon: 'new_releases', tab: 'Help', group: 'Help', noRecord: true, run: () => alertDialog('What’s New in 0.3', 'QuillPen now runs on Windows, macOS, Linux, Raspberry Pi OS, ChromeOS, iOS and the web as well as Android (see the Releases page). Review ▸ Spelling Dictionaries downloads free dictionaries for 90+ languages, verified and kept offline, checked with Hunspell. Desktop apps save straight back to your files and keep API keys in the system keychain; the web app works offline and can be installed.\nVersion 0.2.1: spelling accepts every variety of English, AI keeps the author’s variety, recovery fixes, and Help ▸ Third-Party Notices.\nVersion 0.2 added recovery of damaged documents (Word Recovery engine), the AI tab with 67 commands, a free on-device model and a setup wizard for AI providers, and Word 97–2003 .doc files. Version 0.1 introduced the full command library, customizable Quick Access Bar and tabs, Print Layout, DOCX/ODT/RTF/HTML/Markdown/EPUB/TXT, track changes, comments, references, mail merge and macros.') },
+  { id: 'help.whatsNew', label: 'What’s New', icon: 'new_releases', tab: 'Help', group: 'Help', noRecord: true, run: () => alertDialog('What’s New in 0.3', 'Anne\'s Pen now runs on Windows, macOS, Linux, Raspberry Pi OS, ChromeOS, iOS and the web as well as Android (see the Releases page). Review ▸ Spelling Dictionaries downloads free dictionaries for 90+ languages, verified and kept offline, checked with Hunspell. Desktop apps save straight back to your files and keep API keys in the system keychain; the web app works offline and can be installed.\nVersion 0.2.1: spelling accepts every variety of English, AI keeps the author’s variety, recovery fixes, and Help ▸ Third-Party Notices.\nVersion 0.2 added recovery of damaged documents (Word Recovery engine), the AI tab with 67 commands, a free on-device model and a setup wizard for AI providers, and Word 97–2003 .doc files. Version 0.1 introduced the full command library, customizable Quick Access Bar and tabs, Print Layout, DOCX/ODT/RTF/HTML/Markdown/EPUB/TXT, track changes, comments, references, mail merge and macros.') },
 ]);

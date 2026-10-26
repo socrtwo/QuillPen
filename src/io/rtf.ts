@@ -649,7 +649,7 @@ class RtfWriter {
       (p.gutter ? `\\gutter${tw(p.gutter)}` : '') + (land ? '\\landscape' : '') + (s.differentOddEven ? '\\facingp' : '') + (p.mirror ? '\\margmirror' : '') +
       `\\deftab${tw(s.defaultTab || 36)}\\widowctrl\\ftnbj\\aenddoc\\ftnrstcont\\aftnnrlc\\viewkind1\\viewscale100`;
     const sect = `\\sectd${s.differentFirst ? '\\titlepg' : ''}${this.sectionProps()}`;
-    const header = `{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang${lang}\\uc1\n{\\fonttbl\n${fonttbl}\n}\n${colortbl}\n${this.styleSheet()}\n${lists}{\\*\\generator QuillPen;}\n{\\info${info}}\n${docProps}\n${sect}\n`;
+    const header = `{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang${lang}\\uc1\n{\\fonttbl\n${fonttbl}\n}\n${colortbl}\n${this.styleSheet()}\n${lists}{\\*\\generator Anne\'s Pen;}\n{\\info${info}}\n${docProps}\n${sect}\n`;
     return header + hf + body + '}';
   }
 }

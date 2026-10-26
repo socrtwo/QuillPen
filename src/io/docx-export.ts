@@ -1720,7 +1720,7 @@ class DocxWriter {
       `<dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">${now}</dcterms:modified>` +
       el('cp:category', p.category) + el('cp:contentStatus', p.status) + '</cp:coreProperties>';
     const app = XML_HEADER + '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">' +
-      '<Template>Normal.dotm</Template><TotalTime>0</TotalTime><Application>QuillPen</Application><DocSecurity>0</DocSecurity>' +
+      '<Template>Normal.dotm</Template><TotalTime>0</TotalTime><Application>Anne\'s Pen</Application><DocSecurity>0</DocSecurity>' +
       el('Manager', p.manager) + el('Company', p.company) + '<LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>';
     const customEntries = Object.entries(this.settings.customProps || {});
     const custom = customEntries.length
@@ -1821,7 +1821,7 @@ function childrenOf(n: PMNode): PMNode[] {
   return out;
 }
 
-/** Export a QuillPen document as a .docx Blob. */
+/** Export an Anne's Pen document as a .docx Blob. */
 export async function exportDocx(doc: PMNode, opts: ExportOptions): Promise<Blob> {
   const w = new DocxWriter(doc, opts);
   await w.prepareMedia();

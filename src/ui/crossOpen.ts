@@ -1,6 +1,6 @@
 /**
  * Opening a file that is not a word-processing document (a spreadsheet, a presentation or an
- * email): offer the sister app that edits it natively (QuillGrid, QuillPost, QuillStage) when it
+ * email): offer the sister app that edits it natively (Anne's Grid, Anne's Post, Anne's Stage) when it
  * can be reached from here, and always offer to import it into a document.
  */
 import type { SniffResult } from '../io/sniff';

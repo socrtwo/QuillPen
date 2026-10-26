@@ -18,7 +18,7 @@ def releaseKeystorePath = System.getenv('ANDROID_KEYSTORE_PATH')
 def hasReleaseKeystore = releaseKeystorePath != null && !releaseKeystorePath.trim().isEmpty() &&
         new File(releaseKeystorePath.trim()).isFile()
 if (!hasReleaseKeystore) {
-    logger.lifecycle('QuillPen: ANDROID_KEYSTORE_PATH not set or missing - release build will be signed with the DEBUG key (sideloading/testing only).')
+    logger.lifecycle('Anne\'s Pen: ANDROID_KEYSTORE_PATH not set or missing - release build will be signed with the DEBUG key (sideloading/testing only).')
 }
 
 android {

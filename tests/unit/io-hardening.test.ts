@@ -167,7 +167,7 @@ describe('markup and style injection', () => {
     expect(box.attrs).toMatchObject({ width: null, bg: null, padding: 6, float: 'none', kind: 'textbox' });
     const style = (DOMSerializer.fromSchema(S).serializeNode(box) as HTMLElement).getAttribute('style') || '';
     expect(style).not.toMatch(/position|url\(|z-index/);
-    // Options QuillPen itself writes still round-trip.
+    // Options Anne's Pen itself writes still round-trip.
     const attrs = { float: 'right', width: '35%', border: '2px solid var(--qf-accent1)', bg: '#fff8c5', radius: 8, rotate: 5, padding: 10, shadow: true, kind: 'callout' };
     const back = await importDocx(toArrayBuffer(await blobToBytes(await exportDocx(doc(S.nodes.text_box.create(attrs, [p('Inside')])), OPTS))), 'b.docx');
     expect(find(back, 'text_box')[0].attrs).toMatchObject(attrs);

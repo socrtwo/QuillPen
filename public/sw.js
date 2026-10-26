@@ -1,4 +1,4 @@
-// QuillPen service worker: makes the web app (and the ChromeOS / desktop-browser install) work
+// Anne's Pen service worker: makes the web app (and the ChromeOS / desktop-browser install) work
 // offline. Pages are network-first so an update shows on the next visit; other same-origin files
 // (hashed scripts, fonts, dictionaries) are served from the cache and refreshed in the background.
 const CACHE = 'quillpen-v1';

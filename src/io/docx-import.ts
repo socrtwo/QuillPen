@@ -3,7 +3,7 @@
  *
  * Reads word/document.xml and its companion parts (styles, numbering, footnotes, endnotes,
  * comments, headers/footers, settings, theme, docProps, media) with JSZip + DOMParser and
- * builds a QuillPen `doc` node. Elements are selected by localName so both Transitional
+ * builds an Anne's Pen `doc` node. Elements are selected by localName so both Transitional
  * and Strict OOXML namespaces work. Unknown markup is skipped, never fatal.
  *
  * Notes on mapping decisions
@@ -12,7 +12,7 @@
  *   wrapped in a `column_section` (continuous breaks bounding a columned section do not
  *   produce extra section_break nodes, which makes column sections round-trip).
  * - Styles: custom styles used by the document are imported into settings.styles; for
- *   built-in style names only the properties that differ from QuillPen's own definition
+ *   built-in style names only the properties that differ from Anne's Pen's own definition
  *   are imported as overrides.
  * - Complex fields are tracked with a stack that spans runs and paragraphs; TOC / INDEX /
  *   BIBLIOGRAPHY / TOA fields become `gen_block`s whose cache holds the cached result lines.
@@ -1419,7 +1419,7 @@ class DocxImporter {
       const it = items[k];
       if (!('node' in it)) continue;
       const n = it.node;
-      // Hidden spacer paragraph between two tables (written by QuillPen to keep them apart).
+      // Hidden spacer paragraph between two tables (written by Anne's Pen to keep them apart).
       if (n.type === S.paragraph && n.childCount === 0 && n.attrs.hidden && flat.length && flat[flat.length - 1].node.type === S.table) {
         const nx = items[k + 1];
         if (nx && 'node' in nx && nx.node.type === S.table) continue;
@@ -1994,7 +1994,7 @@ function plainMath(e: Element | null): string {
 // ------------------------------------------------------------------------------------------
 // Entry point
 
-/** Import a .docx / .docm / .dotx / .dotm file into a QuillPen document. */
+/** Import a .docx / .docm / .dotx / .dotm file into an Anne's Pen document. */
 export async function importDocx(data: ArrayBuffer, name: string): Promise<PMNode> {
   return importDocxZip(await JSZip.loadAsync(data), name);
 }

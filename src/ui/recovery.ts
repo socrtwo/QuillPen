@@ -85,20 +85,20 @@ const MANUAL: Record<string, [string, string]> = {
     <p>Google Drive → <b>Trash</b>, OneDrive → <b>Recycle bin</b>, and the Files app's trash keep deleted files for about 30 days.</p>
     <h3>3. Cached and temporary copies</h3>
     <p>With a file manager, look in <code>/sdcard/Android/data/com.microsoft.office.word/cache/</code> and the app's <code>files</code> folder (access depends on the Android version).</p>
-    <h3>4. QuillPen's own copies</h3>
-    <p>File → Info → <b>Versions</b> lists the snapshots QuillPen saved, and Open → Recent keeps a cached copy of each file you opened here.</p>
+    <h3>4. Anne\'s Pen's own copies</h3>
+    <p>File → Info → <b>Versions</b> lists the snapshots Anne\'s Pen saved, and Open → Recent keeps a cached copy of each file you opened here.</p>
     <h3>5. Online viewers</h3>
     <p>${link('https://office.live.com/start/Word.aspx', 'Word for the web')} and ${link('https://docs.google.com/', 'Google Docs')} sometimes open what desktop apps refuse.</p>`],
   windows: ['Windows', `
     <h3>1. AutoRecover files</h3>
-    <p>Word saves AutoRecover snapshots as <code>.asd</code> files (QuillPen opens them). Paste into the Explorer address bar:</p>
+    <p>Word saves AutoRecover snapshots as <code>.asd</code> files (Anne\'s Pen opens them). Paste into the Explorer address bar:</p>
     <ul><li><code>%AppData%\\Microsoft\\Word\\</code></li><li><code>%LocalAppData%\\Microsoft\\Office\\UnsavedFiles\\</code></li></ul>
     <h3>2. Temporary and backup files</h3>
     <p><code>%Temp%</code>: search for <code>~WRD*.tmp</code>, <code>~WRL*.tmp</code> and <code>~$*.docx</code>; Word backup copies are <code>.wbk</code>. In Word: File → Info → Manage Document → <b>Recover Unsaved Documents</b>.</p>
     <h3>3. Previous Versions / Shadow Copies</h3>
     <p>Right-click the file or folder → Properties → <b>Previous Versions</b> (needs System Protection or File History). For older Windows: ${link('http://www.shadowexplorer.com/', 'ShadowExplorer')}.</p>
     <h3>4. Open and Repair, Recover Text from Any File</h3>
-    <p>In Word: File → Open → Browse, select the file, click the arrow on <b>Open</b> → <b>Open and Repair</b>. Or set the file-type filter to <b>Recover Text from Any File (*.*)</b>. QuillPen has both commands on File → Open.</p>
+    <p>In Word: File → Open → Browse, select the file, click the arrow on <b>Open</b> → <b>Open and Repair</b>. Or set the file-type filter to <b>Recover Text from Any File (*.*)</b>. Anne\'s Pen has both commands on File → Open.</p>
     <h3>5. Microsoft's guidance</h3>
     <p>${link('https://support.microsoft.com/en-us/office/recover-an-earlier-version-of-an-office-file-851b6ea8-1d12-43e2-b3f2-1095bb16cee2', 'Recover an earlier version of an Office file')} · ${link('https://support.microsoft.com/en-us/topic/how-to-troubleshoot-damaged-documents-in-word-b3b1986b-0c45-4ec2-baef-1e9a222badf3', 'Troubleshoot damaged documents in Word')}</p>
     <h3>6. Deleted-file recovery</h3>
@@ -128,7 +128,7 @@ strings -n 4 -e l damaged.doc   # UTF-16, Word's default</code></pre>
   tools: ['More S2 recovery tools', `
     <p>Free tools by the author of Word Recovery, each specialized for one kind of damage:</p>
     <ul>
-      <li>${link('https://socrtwo.github.io/wordrecovery-SF/', 'Word Recovery')}: the engine QuillPen's recovery is ported from</li>
+      <li>${link('https://socrtwo.github.io/wordrecovery-SF/', 'Word Recovery')}: the engine Anne\'s Pen's recovery is ported from</li>
       <li>${link('https://socrtwo.github.io/CorruptDOCXRepair/', 'CorruptDOCXRepair')} · ${link('https://socrtwo.github.io/quickwordrecovr-SF/', 'Quick Word Recovr')} · ${link('https://socrtwo.github.io/damageddocx2txt-SF/', 'Damageddocx2txt')}</li>
       <li>${link('https://socrtwo.github.io/xmltrncatorfixr-SF/app/', 'XML Truncator-Fixer')} · ${link('https://socrtwo.github.io/Immortal-Zip/', 'Immortal Zip')} · ${link('https://socrtwo.github.io/Universal-File-Repair-Tool/', 'Universal File Repair Tool')}</li>
       <li>${link('https://socrtwo.github.io/oorecovery-SF/', 'OO Recovery (OpenDocument)')} · ${link('https://socrtwo.github.io/savvyoffice-SF/', 'Savvy Repair for Microsoft Office')}</li>

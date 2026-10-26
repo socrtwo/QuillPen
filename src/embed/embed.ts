@@ -1,9 +1,9 @@
 /**
- * Embedded-editor mode (docs/EMBED.md): QuillPost loads this app in an <iframe> as
+ * Embedded-editor mode (docs/EMBED.md): Anne's Post loads this app in an <iframe> as
  * index.html?embed=compose&host=quillpost&v=1 and edits a message body in it. This module is the message
  * protocol, kept free of the application so it can be tested on its own:
  *
- *   Pen -> Post  quill-embed:ready    { app: "QuillPen", version }
+ *   Pen -> Post  quill-embed:ready    { app: "Anne's Pen", version }
  *   Post -> Pen  quill-embed:load     { html, subject?, theme?, lang? }
  *   Pen -> Post  quill-embed:changed  { dirty: true }            (at most every 2 s)
  *   Post -> Pen  quill-embed:request  { id }
@@ -18,7 +18,7 @@ export const EMBED_PREFIX = 'quill-embed:';
 export const EMBED_VERSION = 1;
 export const CHANGED_INTERVAL_MS = 2000;
 
-/** "compose" when the page was opened as QuillPost's embedded editor, else null. */
+/** "compose" when the page was opened as Anne's Post's embedded editor, else null. */
 export function embedModeFrom(search: string): 'compose' | null {
   try { return new URLSearchParams(search).get('embed') === 'compose' ? 'compose' : null; } catch { return null; }
 }
@@ -70,7 +70,7 @@ export class EmbedSession {
   }
 
   /** Tell the host the editor is listening. */
-  ready(): void { this.send('ready', { app: 'QuillPen', version: this.env.appVersion }); }
+  ready(): void { this.send('ready', { app: 'Anne\'s Pen', version: this.env.appVersion }); }
 
   /** Handle a window "message" event. Returns true when it was a protocol message that was acted on. */
   async handle(e: { source: unknown; origin: string; data: unknown }): Promise<boolean> {

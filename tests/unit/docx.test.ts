@@ -370,7 +370,7 @@ describe('DOCX round trip', () => {
     expect(s.properties.company).toBe('Analytical Engines');
     expect(s.page.sizeName).toBe('A4');
     expect(s.page.margin).toEqual({ top: 72, right: 54, bottom: 72, left: 54 });
-    // Built-in styles that match QuillPen's own definitions are not re-imported as overrides.
+    // Built-in styles that match Anne's Pen's own definitions are not re-imported as overrides.
     expect(s.styles['Heading 1']).toBeUndefined();
     expect(s.styles.Normal).toBeUndefined();
   });

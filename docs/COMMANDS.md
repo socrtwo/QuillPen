@@ -1,6 +1,6 @@
-# QuillPen Command Reference
+# Anne's Pen Command Reference
 
-QuillPen ships **823 commands**. Every one can be placed on the Quick Access Bar, added to a custom tab, bound to a keyboard shortcut, recorded in a macro, or found with command search (Alt+Q).
+Anne's Pen ships **823 commands**. Every one can be placed on the Quick Access Bar, added to a custom tab, bound to a keyboard shortcut, recorded in a macro, or found with command search (Alt+Q).
 
 435 of them are "Commands Not in the Tabs" — reachable through the Quick Access Bar chooser, Customize Tabs, the command search, or menus — mirroring how desktop suites expose their full command library.
 
@@ -32,13 +32,13 @@ This file is generated from the source by `npm run catalog`.
 | Close All Documents | Close |  | `file.closeAll` | not in tabs |
 | Close Document | Close | Ctrl+w, Ctrl+F4 | `file.close` |  |
 | Exit | Close |  | `file.exit` | not in tabs |
+| Export as Anne's Pen Document (.qpd) | Export |  | `file.export.qpd` | not in tabs |
 | Export as EPUB e-book (.epub) | Export |  | `file.export.epub` | not in tabs |
 | Export as Flat OpenDocument (.fodt) | Export |  | `file.export.fodt` | not in tabs |
 | Export as Markdown (.md) | Export |  | `file.export.md` | not in tabs |
 | Export as OpenDocument Text (.odt) | Export |  | `file.export.odt` | not in tabs |
 | Export as PDF | Export |  | `file.exportPdf` |  |
 | Export as Plain Text (.txt) | Export |  | `file.export.txt` | not in tabs |
-| Export as QuillPen Document (.qpd) | Export |  | `file.export.qpd` | not in tabs |
 | Export as Rich Text Format (.rtf) | Export |  | `file.export.rtf` | not in tabs |
 | Export as Web Page (.html) | Export |  | `file.export.html` | not in tabs |
 | Export as Word Document (.docx) | Export |  | `file.export.docx` | not in tabs |
@@ -848,7 +848,7 @@ This file is generated from the source by `npm run catalog`.
 
 | Command | Group | Shortcut | ID | Notes |
 |---|---|---|---|---|
-| About QuillPen | Help |  | `help.about` |  |
+| About Anne's Pen | Help |  | `help.about` |  |
 | Command Reference | Help |  | `help.commands` |  |
 | Keyboard Shortcuts | Help | Ctrl+/ | `help.shortcuts` |  |
 | Report an Issue | Help |  | `help.feedback` |  |

@@ -1,6 +1,6 @@
 # File formats
 
-QuillPen identifies every file by its **content**, not its name (`src/io/sniff.ts`): magic numbers,
+Anne's Pen identifies every file by its **content**, not its name (`src/io/sniff.ts`): magic numbers,
 compound-file (OLE2) stream names, ZIP entry names and `mimetype` entries, XML root elements and
 namespaces, RTF/HTML/MIME headers, and text heuristics (byte-order marks, UTF-16 without a BOM,
 UTF-8 validity, markup). The extension only breaks ties between equally likely formats. When the
@@ -9,7 +9,7 @@ content and the name disagree, the file opens by content and a short note says s
 same way.
 
 Spreadsheets, presentations and email are not word-processing documents. Opening one asks whether
-to hand it to the sister app that edits it natively (QuillGrid, QuillStage or QuillPost: on Android
+to hand it to the sister app that edits it natively (Anne's Grid, Anne's Stage or Anne's Post: on Android
 through a view intent limited to that app's package, on the desktop through the system's registered
 handler, on the web through a link), or to import it into a document: one table per sheet, one
 section per slide, or a message with its header block, body and attachment list.

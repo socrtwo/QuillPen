@@ -1,6 +1,6 @@
 # Opening damaged documents
 
-QuillPen includes the recovery engine from [Word Recovery (socrtwo/wordrecovery-SF)](https://github.com/socrtwo/wordrecovery-SF), ported to TypeScript and extended. It runs automatically whenever a .docx, .docm, .doc, .odt, .rtf, .epub or .fodt file fails to open normally. It also runs when a large package opens with no content. You can also start it on purpose:
+Anne's Pen includes the recovery engine from [Word Recovery (socrtwo/wordrecovery-SF)](https://github.com/socrtwo/wordrecovery-SF), ported to TypeScript and extended. It runs automatically whenever a .docx, .docm, .doc, .odt, .rtf, .epub or .fodt file fails to open normally. It also runs when a large package opens with no content. You can also start it on purpose:
 
 - **File ▸ Open ▸ Open and Repair…** runs every recovery method, even on a file that opens, and shows the report.
 - **File ▸ Open ▸ Recover Text from Any File…** extracts readable text from any file: damaged documents, Word backup (.wbk) and AutoRecover (.asd) files, `~WRD*.tmp` temp files, or unknown data.
@@ -44,7 +44,7 @@ The engine is also checked against a real-world damaged .docx that is held priva
 - intact parts were reported as damaged, because JSZip reads the stored CRC-32 as a signed number and the check compared it with an unsigned one;
 - the user saw the raw decompressor message.
 
-QuillPen now recovers that file's formatted text, table and bold runs up to the break and marks where the document ends.
+Anne's Pen now recovers that file's formatted text, table and bold runs up to the break and marks where the document ends.
 
 ## Limits
 

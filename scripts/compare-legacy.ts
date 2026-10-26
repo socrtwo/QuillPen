@@ -1,5 +1,5 @@
 /**
- * Fidelity check against LibreOffice: imports every file in a directory with QuillPen's
+ * Fidelity check against LibreOffice: imports every file in a directory with Anne's Pen's
  * importers, converts the same files to text with LibreOffice, and prints word recall/precision
  * and the formatting the import produced.
  *

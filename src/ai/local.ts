@@ -1,5 +1,5 @@
 /**
- * On-device model ("QuillPen Local AI"): a small open instruction model run with
+ * On-device model ("Anne's Pen Local AI"): a small open instruction model run with
  * Transformers.js in a module Web Worker. WebGPU is used when the device offers it, otherwise
  * WebAssembly on the CPU.
  *
@@ -141,7 +141,7 @@ export async function localChat(model: string, req: ChatRequest): Promise<ChatRe
 export async function localStorageEstimate(): Promise<string> {
   try {
     const e = await navigator.storage?.estimate?.();
-    if (e?.usage) return `${(e.usage / 1048576).toFixed(0)} MB used by QuillPen in this browser storage`;
+    if (e?.usage) return `${(e.usage / 1048576).toFixed(0)} MB used by Anne\'s Pen in this browser storage`;
   } catch { /* unsupported */ }
   return '';
 }

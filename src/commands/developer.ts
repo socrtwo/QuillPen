@@ -14,7 +14,7 @@ import type { Macro } from '../prefs';
 const N = schema.nodes;
 const v = (app: App) => app.view;
 
-/** API object exposed to script macros (the QuillPen equivalent of an object model). */
+/** API object exposed to script macros (the Anne's Pen equivalent of an object model). */
 export function macroApi(app: App) {
   return {
     exec: (id: string, arg?: any) => app.exec(id, arg),
@@ -59,7 +59,7 @@ export async function runMacro(app: App, m: Macro, times = 1) {
 }
 
 async function editScript(app: App, existing?: Macro) {
-  const code = existing?.steps.find((s) => s.id === '__script')?.arg ?? `// QuillPen macro. The "qf" object gives access to the document.\n// Examples:\n//   qf.replaceAll('  ', ' ');\n//   qf.exec('fmt.bold');\n//   for (const p of qf.paragraphs()) if (p.text.startsWith('Chapter')) qf.setStyle(p.index, 'Heading 1');\nconst words = qf.text().split(/\\s+/).filter(Boolean).length;\nqf.toast('Words: ' + words);`;
+  const code = existing?.steps.find((s) => s.id === '__script')?.arg ?? `// Anne\'s Pen macro. The "qf" object gives access to the document.\n// Examples:\n//   qf.replaceAll('  ', ' ');\n//   qf.exec('fmt.bold');\n//   for (const p of qf.paragraphs()) if (p.text.startsWith('Chapter')) qf.setStyle(p.index, 'Heading 1');\nconst words = qf.text().split(/\\s+/).filter(Boolean).length;\nqf.toast('Words: ' + words);`;
   const r = await openDialog({ title: existing ? `Edit Macro: ${existing.name}` : 'New Script Macro', wide: true, help: 'Script macros run JavaScript with the qf API: exec(id,arg), text(), selection(), insert(t), replaceAll(f,r,{regex,caseSensitive,wholeWord}), paragraphs(), setStyle(i,style), select(a,b), settings(), updateSettings(fn), alert(m), prompt(label), toast(m), commands(). Only run scripts you trust.', fields: [
     { key: 'name', label: 'Macro name', type: 'text', value: existing?.name || 'Macro1' },
     { key: 'desc', label: 'Description', type: 'text', value: existing?.description || '' },
