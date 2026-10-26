@@ -12,6 +12,10 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
+      tag:
+        description: 'Release tag to create, e.g. v0.5.0 (for sessions that can push branches but not tags). Empty: v<version>-build.<run>'
+        type: string
+        default: ''
       prerelease:
         description: 'Mark the release as a prerelease'
         type: boolean
@@ -154,8 +158,15 @@ jobs:
       - id: meta
         run: |
           V='${{ needs.web.outputs.version }}'
-          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="${GITHUB_REF#refs/tags/}"; else TAG="v$V-build.${{ github.run_number }}"; fi
+          if [[ -n "${{ inputs.tag }}" ]]; then TAG="${{ inputs.tag }}"
+          elif [[ "$GITHUB_REF" == refs/tags/v* ]]; then TAG="${GITHUB_REF#refs/tags/}"; else TAG="v$V-build.${{ github.run_number }}"; fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          # Tags: prerelease when the version has a suffix (v1.0.0-beta.1). Manual runs: the checkbox.
+          # [release] commits: always a prerelease.
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then [[ "$TAG" == *-* ]] && PRE=true || PRE=false
+          elif [[ "${{ github.event_name }}" == workflow_dispatch ]]; then PRE='${{ inputs.prerelease }}'
+          else PRE=true; fi
+          echo "prerelease=$PRE" >> "$GITHUB_OUTPUT"
           FAILED=""
           for j in "desktop:${{ needs.desktop.result }}" "ios:${{ needs.ios.result }}" "android:${{ needs.android.result }}"; do
             [[ "${j#*:}" == success ]] || FAILED="$FAILED ${j%%:*}"
@@ -166,7 +177,8 @@ jobs:
           tag_name: ${{ steps.meta.outputs.tag }}
           target_commitish: ${{ github.sha }}
           name: Anne's Pen ${{ steps.meta.outputs.tag }}
-          prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease || contains(github.ref_name, '-') }}
+          prerelease: ${{ steps.meta.outputs.prerelease == 'true' }}
+          make_latest: ${{ steps.meta.outputs.prerelease != 'true' }}
           generate_release_notes: true
           body: |
             Built from `${{ github.ref_name }}` at ${{ github.sha }}. Installation for each platform: docs/INSTALL.md.
